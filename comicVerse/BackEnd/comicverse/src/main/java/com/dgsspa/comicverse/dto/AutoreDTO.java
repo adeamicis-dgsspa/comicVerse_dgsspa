@@ -2,7 +2,7 @@ package com.dgsspa.comicverse.dto;
 
 import jakarta.validation.constraints.*;
 
-public class FumettoDTO {
+public class AutoreDTO {
 
     @NotBlank(message = "Campo Obbligatorio")
     @Pattern(regexp = "^[\\p{L}'\\s]+$", message = "Il nome dell'autore può contenere solo lettere, spazi e apostrofi")
@@ -11,7 +11,7 @@ public class FumettoDTO {
     @NotBlank(message = "Campo Obbligatorio")
     private String biografia;
 
-    @NotNull(message = "Campo vivo Obbligatorio")
+
     private boolean vivo;
 
     public AutoreDTO() {

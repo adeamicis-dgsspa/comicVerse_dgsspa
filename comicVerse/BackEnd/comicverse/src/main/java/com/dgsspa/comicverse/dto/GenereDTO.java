@@ -3,7 +3,7 @@ package com.dgsspa.comicverse.dto;
 import jakarta.validation.constraints.*;
 import java.time.LocalDateTime;
 
-public class FumettoDTO {
+public class GenereDTO {
     @NotBlank(message = "Campo Obbligatorio")
     @Pattern(regexp = "^[\\p{L}]+$", message = "Il nome dell'editore può contenere solo lettere")
 

@@ -1,4 +1,4 @@
-package com.dgsspa.comicverse.comicverse;
+package com.dgsspa.comicverse;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

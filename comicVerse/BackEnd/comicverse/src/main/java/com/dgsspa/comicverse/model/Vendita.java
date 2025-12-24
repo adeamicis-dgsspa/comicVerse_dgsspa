@@ -20,7 +20,7 @@ public class Vendita {
     private MetodoOrdine metodo;
 
     @ManyToMany(mappedBy = "vendite", fetch = FetchType.LAZY)
-    private List<Dettaglio> dettagli = new ArrayList<>();
+    private List<Inventario> inventari = new ArrayList<>();
 
     public Vendita() {
     }

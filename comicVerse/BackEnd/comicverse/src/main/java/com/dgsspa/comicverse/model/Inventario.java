@@ -19,7 +19,7 @@ public class Inventario{
     private Float prezzoVendita;
     private Integer giacenza;
 
-    @ManytoMany(fetch= FetchType.LAZY)
+    @ManyToMany(fetch= FetchType.LAZY)
     @JoinTable(
             name = "dettaglio_vendita",
             joinColumns = @JoinColumn (name = "articolo_id"),
@@ -69,3 +69,4 @@ public class Inventario{
     public void setVendite(List<Vendita> vendite) {
         this.vendite = vendite;
     }
+}    

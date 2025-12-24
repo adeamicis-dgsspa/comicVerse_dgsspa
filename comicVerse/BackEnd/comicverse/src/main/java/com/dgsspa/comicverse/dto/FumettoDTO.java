@@ -3,6 +3,7 @@ package com.dgsspa.comicverse.dto;
 import jakarta.validation.constraints.*;
 import java.time.LocalDateTime;
 
+
 public class FumettoDTO {
     @NotBlank(message = "Campo Obbligatorio")
     private String titolo;

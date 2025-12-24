@@ -1,13 +1,15 @@
 package com.dgsspa.comicverse.model;
 
-import jakarta.persistence.*;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import javax.persistence.*;
 import java.util.List;
 import java.util.ArrayList;
 import java.time.LocalDateTime;
 
 @Entity
-@Table (name="fumetto")
+@Table(name="fumetto")
 public class Fumetto{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

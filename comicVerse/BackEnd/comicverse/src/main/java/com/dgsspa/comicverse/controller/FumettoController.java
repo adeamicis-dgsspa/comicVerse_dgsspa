@@ -15,23 +15,22 @@ public class FumettoController {
     @Autowired
     private FumettoService fumettoService;
 
-    @GetMapping()
+    /*@GetMapping()
     public List<FumettoDTO> getFumetti() {
-    }
         return FumettoService.stampaTuttiFumetti();
-    }
+    }*/
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getFumetto(@PathVariable Integer id) {
         FumettoDTO fumetto = fumettoService.recuperaFumettoPerId(id);
         if (fumetto != null) {
-            return  ?ResponseEntity.ok(fumetto)
+            return  ?ResponseEntity.ok(fumetto);
         }//mettere tutto nel try catch
         else {
             String messaggioErrore = "Fumetto con ID " + id + " non trovato nel database ComicVerse.";
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(messaggioErrore);
         }
-    }
+    }/*
     @PostMapping()
     public ResponseEntity<FumettoDTO> creaNuovoFumetto(@RequestBody FumettoDTO fumettoDTO) {
         FumettoDTO saved = fumettoService.inserisciNuovoFumetto(fumettoDTO);
