@@ -1,10 +1,12 @@
 package com.dgsspa.comicverse.dto;
 
-import jakarta.validation.constraints.*;
+import javax.validation.constraints.*;
 import java.time.LocalDateTime;
 
-
 public class FumettoDTO {
+
+    private Integer id;
+
     @NotBlank(message = "Campo Obbligatorio")
     private String titolo;
 
@@ -12,27 +14,34 @@ public class FumettoDTO {
     @Pattern(regexp = "^[\\p{L}'\\s]+$", message = "Il nome dell'editore può contenere solo lettere, spazi e apostrofi")
     private String editore;
 
-
     @NotNull(message = "Campo volume Obbligatorio")
     @Min(value = 1, message = "Devi inserire il numero del volume")
     private Integer volume;
 
-
     @PastOrPresent(message = "La data di pubblicazione non può superare la data di oggi")
     private LocalDateTime dataPubblicazione;
-
 
     private String descrizione;
 
     public FumettoDTO() {
     }
 
-    public FumettoDTO(String titolo, String editore, LocalDateTime dataPubblicazione, String descrizione) {
-        this.titolo=titolo;
-        this.editore=editore;
-        this.volume=volume;
-        this.dataPubblicazione=dataPubblicazione;
-        this.descrizione=descrizione;
+    public FumettoDTO(Integer id, String titolo, String editore, Integer volume,
+                      LocalDateTime dataPubblicazione, String descrizione) {
+        this.id = id;
+        this.titolo = titolo;
+        this.editore = editore;
+        this.volume = volume;
+        this.dataPubblicazione = dataPubblicazione;
+        this.descrizione = descrizione;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTitolo() {

@@ -1,6 +1,6 @@
 package com.dgsspa.comicverse.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.util.List;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ public class Vendita {
     private Long totaleOrdine;
 
     @Enumerated(EnumType.STRING)
-    private MetodoOrdine metodo;
+    private MetodoPagamento metodo;
 
     @ManyToMany(mappedBy = "vendite", fetch = FetchType.LAZY)
     private List<Inventario> inventari = new ArrayList<>();
@@ -25,34 +25,29 @@ public class Vendita {
     public Vendita() {
     }
 
-/*----------------------------------------------------------------------------------------*/
-
-
+    /*----------------------------------------------------------------------------------------*/
 
     public Integer getId() {
-
         return id;
-        }
+    }
 
     public LocalDateTime getDataOrdine() {
-
         return dataOrdine;
-        }
+    }
 
     public Long getTotaleOrdine() {
-
         return totaleOrdine;
     }
 
-    public MetodoOrdine getMetodo() {
+    public MetodoPagamento getMetodo() {
         return metodo;
     }
 
-    public List<Dettaglio> getDettagli() {
-        return dettagli;
+    public List<Inventario> getInventari() {
+        return inventari;
     }
 
-/*----------------------------------------------------------------------------------------*/
+    /*----------------------------------------------------------------------------------------*/
 
     public void setId(Integer id) {
         this.id = id;
@@ -66,10 +61,11 @@ public class Vendita {
         this.totaleOrdine = totaleOrdine;
     }
 
-    public void setMetodo(MetodoOrdine metodo) {
+    public void setMetodo(MetodoPagamento metodo) {
         this.metodo = metodo;
     }
 
-    public void setDettagli(List<Dettaglio> dettagli) {
-        this.dettagli = dettagli;
+    public void setInventari(List<Inventario> inventari) {
+        this.inventari = inventari;
     }
+}

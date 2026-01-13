@@ -14,7 +14,7 @@ public abstract class AbstractManagedRepository {
     private EntityManagerFactory entityManagerFactory;
 
     @PersistenceContext(type = PersistenceContextType.EXTENDED)
-    private EntityManager entityManager;
+    protected EntityManager entityManager;
 
     public void executeWithEntityManager(Runnable code) {
         try {
