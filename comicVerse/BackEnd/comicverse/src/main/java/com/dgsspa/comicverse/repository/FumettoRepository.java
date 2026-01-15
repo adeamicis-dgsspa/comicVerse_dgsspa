@@ -2,13 +2,13 @@ package com.dgsspa.comicverse.repository;
 
 import com.dgsspa.comicverse.model.Fumetto;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-@Transactional
 @Repository
+@Transactional
 public class FumettoRepository extends AbstractManagedRepository {
 
     public List<Fumetto> findAll() {
@@ -36,13 +36,12 @@ public class FumettoRepository extends AbstractManagedRepository {
     }
 
     public void deleteById(Integer id) {
-        executeWithEntityManager(() -> {
-            entityManager.getTransaction().begin();
-            Fumetto fumetto = entityManager.find(Fumetto.class, id);
+        withEntityManager(em -> {
+            Fumetto fumetto = em.find(Fumetto.class, id);
             if (fumetto != null) {
-                entityManager.remove(fumetto);
+                em.remove(fumetto);
             }
-            entityManager.getTransaction().commit();
+            return null;
         });
     }
 
