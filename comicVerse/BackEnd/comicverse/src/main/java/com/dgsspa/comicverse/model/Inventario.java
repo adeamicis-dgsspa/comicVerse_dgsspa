@@ -1,4 +1,4 @@
-package com.dgsspa.comicverse.model;
+/*package com.dgsspa.comicverse.model;
 
 import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -69,4 +69,4 @@ public class Inventario{
     public void setVendite(List<Vendita> vendite) {
         this.vendite = vendite;
     }
-}    
+}    */

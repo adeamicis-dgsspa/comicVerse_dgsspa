@@ -1,4 +1,4 @@
-package com.dgsspa.comicverse.dto;
+/*package com.dgsspa.comicverse.dto;
 
 import jakarta.validation.constraints.*;
 
@@ -47,4 +47,4 @@ public class AutoreDTO {
         this.vivo = vivo;
     }
 
-}
+}*/

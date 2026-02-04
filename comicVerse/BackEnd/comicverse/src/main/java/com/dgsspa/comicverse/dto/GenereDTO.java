@@ -1,4 +1,4 @@
-package com.dgsspa.comicverse.dto;
+/*package com.dgsspa.comicverse.dto;
 
 import jakarta.validation.constraints.*;
 import java.time.LocalDateTime;
@@ -23,4 +23,4 @@ public class GenereDTO {
     public void setNome(String nome) {
         this.nome = nome;
     }
-}
+}*/

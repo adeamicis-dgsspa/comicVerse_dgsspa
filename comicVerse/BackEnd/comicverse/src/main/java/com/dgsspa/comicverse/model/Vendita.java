@@ -1,4 +1,4 @@
-package com.dgsspa.comicverse.model;
+/*package com.dgsspa.comicverse.model;
 
 import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -26,7 +26,7 @@ public class Vendita {
     }
 
     /*----------------------------------------------------------------------------------------*/
-
+/*
     public Integer getId() {
         return id;
     }
@@ -46,9 +46,9 @@ public class Vendita {
     public List<Inventario> getInventari() {
         return inventari;
     }
-
+*/
     /*----------------------------------------------------------------------------------------*/
-
+/*
     public void setId(Integer id) {
         this.id = id;
     }
@@ -68,4 +68,4 @@ public class Vendita {
     public void setInventari(List<Inventario> inventari) {
         this.inventari = inventari;
     }
-}
+}*/

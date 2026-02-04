@@ -1,4 +1,4 @@
-package com.dgsspa.comicverse.model;
+/*package com.dgsspa.comicverse.model;
 
 import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -24,7 +24,7 @@ public class Autore {
     public Autore() {}
 
 /*----------------------------------------------------------------------------------------*/
-
+/*
     public Integer getId() {
         return id;
     }
@@ -46,7 +46,7 @@ public class Autore {
     }
 
 /*----------------------------------------------------------------------------------------*/
-
+/*
     public void setId(Integer id) {
         this.id = id;
     }
@@ -66,4 +66,4 @@ public class Autore {
     public void setFumetti(List<Fumetto> fumetti) {
         this.fumetti = fumetti;
     }
-}
+}*/

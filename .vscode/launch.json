@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ComicverseApplication<comicverse>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.dgsspa.comicverse.service.ComicverseApplication",
+            "projectName": "comicverse",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ComicverseApplication<comicverse>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.dgsspa.comicverse.ComicverseApplication",
+            "projectName": "comicverse",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

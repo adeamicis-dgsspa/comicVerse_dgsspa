@@ -2,13 +2,11 @@ package com.dgsspa.comicverse.repository;
 
 import com.dgsspa.comicverse.model.Fumetto;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 @Repository
-@Transactional
 public class FumettoRepository extends AbstractManagedRepository {
 
     public List<Fumetto> findAll() {

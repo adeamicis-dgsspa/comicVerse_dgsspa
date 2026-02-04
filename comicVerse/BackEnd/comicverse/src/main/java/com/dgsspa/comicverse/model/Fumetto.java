@@ -13,19 +13,22 @@ import java.util.Optional;
 @Table(name="FUMETTO")
 public class Fumetto{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ")
+    @SequenceGenerator(name = "SEQ", sequenceName = "S_VT_ANAG_RI", allocationSize = 1)
+    @Column (name = "ID_FUMETTO") //HO DOVUTO METTERE QUESTA ANNOTAZIONE PERCHè HO CHIAMATO L'ID DIVERSAMENTE E NON LO TROVAVA
     private Integer id;
 
     private String titolo;
     private String editore;
     private Integer volume;
+    @Column (name = "DATA_PUBBLICAZIONE") //IDEM DI PRIMA
     private LocalDateTime dataPubblicazione;
     private String descrizione;
 
-    @OneToOne(mappedBy = "fumetto", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Inventario inventario;
+    /*@OneToOne(mappedBy = "fumetto", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Inventario inventario;*/
 
-    @ManyToMany(fetch= FetchType.LAZY)
+    /*@ManyToMany(fetch= FetchType.LAZY)
     @JoinTable(
             name = "fumetto_autore",
             joinColumns = @JoinColumn (name = "fumetto_id"),
@@ -34,7 +37,7 @@ public class Fumetto{
     private List<Autore> autori;
 
     @ManyToMany(mappedBy = "fumetti", fetch = FetchType.LAZY)
-    private List<Genere> generi = new ArrayList<>();
+    private List<Genere> generi = new ArrayList<>();*/
 
 
     public Fumetto(){}
@@ -65,13 +68,13 @@ public class Fumetto{
         return descrizione;
     }
 
-    public List<Autore> getAutori() {
+    /*public List<Autore> getAutori() {
         return autori;
     }
 
     public List<Genere> getGeneri() {
         return generi;
-    }
+    }*/
 
 /*----------------------------------------------------------------------------------------*/
 
@@ -98,12 +101,12 @@ public class Fumetto{
         this.descrizione = descrizione;
     }
 
-    public void setAutori(List<Autore> autori) {
+    /*public void setAutori(List<Autore> autori) {
         this.autori = autori;
     }
 
     public void setGeneri(List<Genere> generi) {
         this.generi = generi;
-    }
+    }*/
 
 }

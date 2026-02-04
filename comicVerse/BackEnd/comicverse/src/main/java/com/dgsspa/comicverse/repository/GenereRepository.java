@@ -1,4 +1,4 @@
-package com.dgsspa.comicverse.repository;
+/*package com.dgsspa.comicverse.repository;
 
 import com.dgsspa.comicverse.model.Genere;
 import org.hibernate.query.Query;
@@ -22,4 +22,4 @@ public class GenereRepository extends AbstractManagedRepository {
                 em.find(Genere.class, id)
         );
     }
-}
+}*/
