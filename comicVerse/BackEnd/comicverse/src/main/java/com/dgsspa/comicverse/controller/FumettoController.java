@@ -34,13 +34,13 @@ public class FumettoController {
         }
     }
 
-    @PostMapping
+    @PostMapping("/crea")
     public ResponseEntity<FumettoDTO> creaNuovoFumetto(@Valid @RequestBody FumettoDTO fumettoDTO) {
         FumettoDTO saved = fumettoService.inserisciNuovoFumetto(fumettoDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/aggiorna/{id}")
     public ResponseEntity<FumettoDTO> aggiornaFumetto(
             @PathVariable Integer id,
             @Valid @RequestBody FumettoDTO fumettoDTO) {
@@ -52,7 +52,7 @@ public class FumettoController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/cancella/{id}")
     public ResponseEntity<Void> eliminaFumetto(@PathVariable Integer id) {
         try {
             fumettoService.eliminaFumetto(id);
