@@ -1,6 +1,8 @@
 package com.dgsspa.comicverse.controller;
 
 import com.dgsspa.comicverse.dto.FumettoDTO;
+import com.dgsspa.comicverse.dto.MessageResponseDTO;
+import com.dgsspa.comicverse.dto.SearchResponseDTO;
 import com.dgsspa.comicverse.service.FumettoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -31,14 +33,14 @@ public class FumettoController {
     }
 
     @GetMapping("/ricerca/titolo")
-    public List<FumettoDTO> getFumettiPerTitoloIniziale(@RequestParam("iniziaCon") String iniziaCon) {
-        return fumettoService.cercaPerTitoloCheIniziaCon(iniziaCon);
+    public SearchResponseDTO<FumettoDTO> getFumettiPerTitolo(@RequestParam("titolo") String titolo) {
+        return fumettoService.cercaPerTitoloConEsito(titolo);
     }
 
     @GetMapping("/ricerca/data")
-    public List<FumettoDTO> getFumettiPubblicatiDopo(
+    public SearchResponseDTO<FumettoDTO> getFumettiPubblicatiDopo(
             @RequestParam("dopo") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dopo) {
-        return fumettoService.cercaPubblicatiDopo(dopo);
+        return fumettoService.cercaPubblicatiDopoConEsito(dopo);
     }
 
     @PostMapping("/crea")
@@ -55,8 +57,7 @@ public class FumettoController {
     }
 
     @DeleteMapping("/cancella/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void eliminaFumetto(@PathVariable Integer id) {
-        fumettoService.eliminaFumetto(id);
+    public MessageResponseDTO eliminaFumetto(@PathVariable Integer id) {
+        return new MessageResponseDTO(fumettoService.eliminaFumetto(id));
     }
 }

@@ -3,7 +3,6 @@ package com.dgsspa.comicverse.repository;
 import com.dgsspa.comicverse.model.Fumetto;
 import org.springframework.stereotype.Repository;
 
-import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -35,17 +34,18 @@ public class FumettoRepository extends AbstractManagedRepository {
         });
     }
 
-    public void deleteById(Integer id) {
-        withEntityManager(em -> {
+    public boolean deleteById(Integer id) {
+        return withEntityManager(em -> {
             Fumetto fumetto = em.find(Fumetto.class, id);
             if (fumetto != null) {
                 em.remove(fumetto);
+                return true;
             }
-            return null;
+            return false;
         });
     }
 
-    public List<Fumetto> findByTitoloStartingWith(String prefisso) {
+    /*public List<Fumetto> findByTitoloStartingWith(String prefisso) {
         return withEntityManager(em ->
                 em.createQuery(
                                 "SELECT f FROM Fumetto f " +
@@ -55,7 +55,7 @@ public class FumettoRepository extends AbstractManagedRepository {
                         .setParameter("prefisso", prefisso)
                         .getResultList()
         );
-    }
+    }*/
 
     public List<Fumetto> findByDataPubblicazioneAfter(LocalDateTime data) {
         return withEntityManager(em ->

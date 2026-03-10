@@ -1,6 +1,10 @@
 package com.dgsspa.comicverse.service;
 
+import com.dgsspa.comicverse.config.ErrorMessagesProperties;
+import com.dgsspa.comicverse.config.SearchMessagesProperties;
+import com.dgsspa.comicverse.config.SuccessMessagesProperties;
 import com.dgsspa.comicverse.dto.FumettoDTO;
+import com.dgsspa.comicverse.dto.SearchResponseDTO;
 import com.dgsspa.comicverse.exception.ResourceNotFoundException;
 import com.dgsspa.comicverse.mapper.FumettoMapper;
 import com.dgsspa.comicverse.model.Fumetto;
@@ -23,11 +27,22 @@ public class FumettoService {
 
     private final FumettoRepository fumettoRepository;
     private final FumettoMapper fumettoMapper;
+    private final SearchMessagesProperties searchMessagesProperties;
+    private final ErrorMessagesProperties errorMessagesProperties;
+    private final SuccessMessagesProperties successMessagesProperties;
 
     @Autowired
-    public FumettoService(FumettoRepository fumettoRepository, FumettoMapper fumettoMapper) {
+    public FumettoService(
+            FumettoRepository fumettoRepository,
+            FumettoMapper fumettoMapper,
+            SearchMessagesProperties searchMessagesProperties,
+            ErrorMessagesProperties errorMessagesProperties,
+            SuccessMessagesProperties successMessagesProperties) {
         this.fumettoRepository = fumettoRepository;
         this.fumettoMapper = fumettoMapper;
+        this.searchMessagesProperties = searchMessagesProperties;
+        this.errorMessagesProperties = errorMessagesProperties;
+        this.successMessagesProperties = successMessagesProperties;
     }
 
     public List<FumettoDTO> stampaTuttiFumetti() {
@@ -41,7 +56,7 @@ public class FumettoService {
         log.debug("Recupero fumetto con id={}", id);
         return fumettoRepository.findById(id)
                 .map(fumettoMapper::toDTO)
-                .orElseThrow(() -> new ResourceNotFoundException("Fumetto non trovato con id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException(String.format(errorMessagesProperties.getFumettoId(), id)));
     }
 
     @Transactional
@@ -63,16 +78,16 @@ public class FumettoService {
                     log.info("Fumetto aggiornato con id={}", updated.getId());
                     return fumettoMapper.toDTO(updated);
                 })
-                .orElseThrow(() -> new ResourceNotFoundException("Fumetto non trovato con id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException(String.format(errorMessagesProperties.getFumettoId(), id)));
     }
 
     @Transactional
-    public void eliminaFumetto(Integer id) {
+    public String eliminaFumetto(Integer id) {
         log.debug("Eliminazione fumetto con id={}", id);
-        if (!fumettoRepository.findById(id).isPresent()){
-            throw new ResourceNotFoundException("Fumetto non trovato con id: " + id);
+        if (!fumettoRepository.deleteById(id)) {
+            throw new ResourceNotFoundException(String.format(errorMessagesProperties.getFumettoId(), id));
         }
-        fumettoRepository.deleteById(id);
+        return String.format(successMessagesProperties.getDeleted(), "Fumetto", id);
     }
 
     public List<FumettoDTO> cercaPerTitolo(String titolo) {
@@ -83,17 +98,30 @@ public class FumettoService {
                 .collect(Collectors.toList());
     }
 
-    public List<FumettoDTO> cercaPerTitoloCheIniziaCon(String prefisso) {
-        log.debug("Ricerca fumetti con titolo che inizia con={}", prefisso);
-        return fumettoRepository.findByTitoloStartingWith(prefisso).stream()
-                .map(fumettoMapper::toDTO)
-                .collect(Collectors.toList());
+    public SearchResponseDTO<FumettoDTO> cercaPerTitoloConEsito(String titolo) {
+        log.debug("Ricerca fumetti per titolo={}", titolo);
+        List<FumettoDTO> risultati = cercaPerTitolo(titolo);
+        return buildSearchResponse(
+                risultati,
+                String.format(searchMessagesProperties.getNoResults(), titolo)
+        );
     }
 
-    public List<FumettoDTO> cercaPubblicatiDopo(LocalDateTime data) {
+    public SearchResponseDTO<FumettoDTO> cercaPubblicatiDopoConEsito(LocalDateTime data) {
         log.debug("Ricerca fumetti pubblicati dopo={}", data);
-        return fumettoRepository.findByDataPubblicazioneAfter(data).stream()
+        List<FumettoDTO> risultati = fumettoRepository.findByDataPubblicazioneAfter(data).stream()
                 .map(fumettoMapper::toDTO)
                 .collect(Collectors.toList());
+        return buildSearchResponse(
+                risultati,
+                String.format(searchMessagesProperties.getNoResults(), data)
+        );
+    }
+
+    private SearchResponseDTO<FumettoDTO> buildSearchResponse(List<FumettoDTO> risultati, String emptyMessage) {
+        if (risultati.isEmpty()) {
+            return new SearchResponseDTO<>(risultati, 0, emptyMessage);
+        }
+        return new SearchResponseDTO<>(risultati, risultati.size(), null);
     }
 }
