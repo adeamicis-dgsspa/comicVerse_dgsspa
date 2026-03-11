@@ -5,7 +5,7 @@ import com.dgsspa.comicverse.model.Fumetto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
-
+import org.springframework.beans.factory.annotation.Autowired;
 @Mapper(componentModel = "spring")
 public interface FumettoMapper {
     FumettoDTO toDTO(Fumetto fumetto);

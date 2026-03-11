@@ -27,7 +27,7 @@ public class FumettoController {
         return fumettoService.stampaTuttiFumetti();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/ricerca/{id}")
     public FumettoDTO getFumetto(@PathVariable Integer id) {
         return fumettoService.recuperaFumettoPerId(id);
     }
