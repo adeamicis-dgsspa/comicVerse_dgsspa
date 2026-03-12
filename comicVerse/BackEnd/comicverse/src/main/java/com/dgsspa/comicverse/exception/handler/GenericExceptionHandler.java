@@ -23,7 +23,7 @@ public class GenericExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResult> handleGenericException(Exception ex) {
-        log.error("Errore non gestito", ex);
+        log.error("Errore non gestito", ex.getLocalizedMessage());
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(new ErrorResult("UNEXPECTED_ERROR", "Errore imprevisto"));
     }

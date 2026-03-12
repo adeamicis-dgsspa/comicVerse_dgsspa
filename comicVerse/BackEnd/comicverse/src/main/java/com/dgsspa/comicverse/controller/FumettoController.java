@@ -34,13 +34,20 @@ public class FumettoController {
 
     @GetMapping("/ricerca/titolo")
     public SearchResponseDTO<FumettoDTO> getFumettiPerTitolo(@RequestParam("titolo") String titolo) {
-        return fumettoService.cercaPerTitoloConEsito(titolo);
+        return fumettoService.cercaPerTitolo(titolo);
     }
 
     @GetMapping("/ricerca/data")
     public SearchResponseDTO<FumettoDTO> getFumettiPubblicatiDopo(
             @RequestParam("dopo") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dopo) {
-        return fumettoService.cercaPubblicatiDopoConEsito(dopo);
+        return fumettoService.cercaPubblicatiData(dopo);
+    }
+
+    @GetMapping("/ricerca/titolo-data")
+    public SearchResponseDTO<FumettoDTO> getFumettiPerTitoloEDopo(
+            @RequestParam("titolo") String titolo,
+            @RequestParam("dopo") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dopo) {
+        return fumettoService.cercaPerTitoloEData(titolo, dopo);
     }
 
     @PostMapping("/crea")

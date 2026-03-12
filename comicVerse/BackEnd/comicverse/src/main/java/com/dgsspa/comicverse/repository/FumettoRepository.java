@@ -67,4 +67,18 @@ public class FumettoRepository extends AbstractManagedRepository {
                         .getResultList()
         );
     }
+
+    public List<Fumetto> findByTitoloContainingAndDataPubblicazioneAfter(String titolo, LocalDateTime data) {
+        return withEntityManager(em ->
+                em.createQuery(
+                                "SELECT f FROM Fumetto f " +
+                                        "WHERE LOWER(f.titolo) LIKE LOWER(CONCAT('%', :titolo, '%')) " +
+                                        "AND f.dataPubblicazione > :data",
+                                Fumetto.class
+                        )
+                        .setParameter("titolo", titolo)
+                        .setParameter("data", data)
+                        .getResultList()
+        );
+    }
 }
