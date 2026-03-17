@@ -44,41 +44,4 @@ public class FumettoRepository extends AbstractManagedRepository {
             return false;
         });
     }
-
-    /*public List<Fumetto> findByTitoloStartingWith(String prefisso) {
-        return withEntityManager(em ->
-                em.createQuery(
-                                "SELECT f FROM Fumetto f " +
-                                        "WHERE LOWER(f.titolo) LIKE LOWER(CONCAT(:prefisso, '%'))",
-                                Fumetto.class
-                        )
-                        .setParameter("prefisso", prefisso)
-                        .getResultList()
-        );
-    }*/
-
-    public List<Fumetto> findByDataPubblicazioneAfter(LocalDateTime data) {
-        return withEntityManager(em ->
-                em.createQuery(
-                                "SELECT f FROM Fumetto f WHERE f.dataPubblicazione > :data",
-                                Fumetto.class
-                        )
-                        .setParameter("data", data)
-                        .getResultList()
-        );
-    }
-
-    public List<Fumetto> findByTitoloContainingAndDataPubblicazioneAfter(String titolo, LocalDateTime data) {
-        return withEntityManager(em ->
-                em.createQuery(
-                                "SELECT f FROM Fumetto f " +
-                                        "WHERE LOWER(f.titolo) LIKE LOWER(CONCAT('%', :titolo, '%')) " +
-                                        "AND f.dataPubblicazione > :data",
-                                Fumetto.class
-                        )
-                        .setParameter("titolo", titolo)
-                        .setParameter("data", data)
-                        .getResultList()
-        );
-    }
 }

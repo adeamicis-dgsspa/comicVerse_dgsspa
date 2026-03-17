@@ -90,45 +90,8 @@ public class FumettoService {
         return String.format(successMessagesProperties.getDeleted(), "Fumetto", id);
     }
 
-    public SearchResponseDTO<FumettoDTO> cercaPerTitolo(String titolo) {
-        log.debug("Ricerca fumetti per titolo={}", titolo);
-        List<FumettoDTO> risultati = fumettoRepository.findAll().stream()
-                .filter(fumetto -> fumetto.getTitolo().toLowerCase().contains(titolo.toLowerCase()))
-                .map(fumettoMapper::toDTO)
-                .collect(Collectors.toList());
-        return buildSearchResponse(
-                risultati,
-                String.format(searchMessagesProperties.getNoResults(), titolo)
-        );
-    }
-
-    public SearchResponseDTO<FumettoDTO> cercaPubblicatiData(LocalDateTime data) {
-        log.debug("Ricerca fumetti pubblicati dopo={}", data);
-        List<FumettoDTO> risultati = fumettoRepository.findByDataPubblicazioneAfter(data).stream()
-                .map(fumettoMapper::toDTO)
-                .collect(Collectors.toList());
-        return buildSearchResponse(
-                risultati,
-                String.format(searchMessagesProperties.getNoResults(), data)
-        );
-    }
-
-    public SearchResponseDTO<FumettoDTO> cercaPerTitoloEData(String titolo, LocalDateTime data) {
-        log.debug("Ricerca fumetti per titolo={} e pubblicati dopo={}", titolo, data);
-        List<FumettoDTO> risultati = fumettoRepository
-                .findByTitoloContainingAndDataPubblicazioneAfter(titolo, data)
-                .stream()
-                .map(fumettoMapper::toDTO)
-                .collect(Collectors.toList());
-        return buildSearchResponse(
-                risultati,
-                String.format(searchMessagesProperties.getNoResults(), titolo + " / " + data)
-        );
-    }
-
     private SearchResponseDTO<FumettoDTO> buildSearchResponse(List<FumettoDTO> risultati, String emptyMessage) {
         if (risultati.isEmpty()) {
-
             return new SearchResponseDTO<>(risultati, 0, emptyMessage);
         }
         return new SearchResponseDTO<>(risultati, risultati.size(), null);
