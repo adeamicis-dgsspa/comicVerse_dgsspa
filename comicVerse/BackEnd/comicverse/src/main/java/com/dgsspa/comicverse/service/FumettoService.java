@@ -90,10 +90,12 @@ public class FumettoService {
         return String.format(successMessagesProperties.getDeleted(), "Fumetto", id);
     }
 
-    private SearchResponseDTO<FumettoDTO> buildSearchResponse(List<FumettoDTO> risultati, String emptyMessage) {
-        if (risultati.isEmpty()) {
-            return new SearchResponseDTO<>(risultati, 0, emptyMessage);
-        }
-        return new SearchResponseDTO<>(risultati, risultati.size(), null);
-    }
+
+
+//    private SearchResponseDTO<FumettoDTO> buildSearchResponse(List<FumettoDTO> risultati, String emptyMessage) {
+//        if (risultati.isEmpty()) {
+//            return new SearchResponseDTO<>(risultati, 0, emptyMessage);
+//        }
+//        return new SearchResponseDTO<>(risultati, risultati.size(), null);
+//    }
 }
