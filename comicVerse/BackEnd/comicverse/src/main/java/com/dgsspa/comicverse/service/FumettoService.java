@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -56,7 +55,8 @@ public class FumettoService {
         log.debug("Recupero fumetto con id={}", id);
         return fumettoRepository.findById(id)
                 .map(fumettoMapper::toDTO)
-                .orElseThrow(() -> new ResourceNotFoundException(String.format(errorMessagesProperties.getFumettoId(), id)));
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        String.format(errorMessagesProperties.getFumettoId(), id)));
     }
 
     @Transactional
@@ -78,16 +78,37 @@ public class FumettoService {
                     log.info("Fumetto aggiornato con id={}", updated.getId());
                     return fumettoMapper.toDTO(updated);
                 })
-                .orElseThrow(() -> new ResourceNotFoundException(String.format(errorMessagesProperties.getFumettoId(), id)));
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        String.format(errorMessagesProperties.getFumettoId(), id)));
     }
 
     @Transactional
     public String eliminaFumetto(Integer id) {
         log.debug("Eliminazione fumetto con id={}", id);
         if (!fumettoRepository.deleteById(id)) {
-            throw new ResourceNotFoundException(String.format(errorMessagesProperties.getFumettoId(), id));
+            throw new ResourceNotFoundException(
+                    String.format(errorMessagesProperties.getFumettoId(), id));
         }
         return String.format(successMessagesProperties.getDeleted(), "Fumetto", id);
+    }
+
+    public SearchResponseDTO<FumettoDTO> cercaPerFiltri(String titolo) {
+        log.debug("Ricerca fumetti per titolo={}", titolo);
+        List<FumettoDTO> risultati = fumettoRepository.searchByFiltri(titolo).stream()
+                .map(fumettoMapper::toDTO)
+                .collect(Collectors.toList());
+        return buildSearchResponse(
+                risultati,
+                String.format(searchMessagesProperties.getNoResults(), titolo)
+        );
+    }
+
+    public SearchResponseDTO<FumettoDTO> stampaTuttiFumettiResponse() {
+        List<FumettoDTO> tutti = stampaTuttiFumetti();
+        return buildSearchResponse(
+                tutti,
+                String.format(searchMessagesProperties.getNoResults(), "")
+        );
     }
 
     private SearchResponseDTO<FumettoDTO> buildSearchResponse(List<FumettoDTO> risultati, String emptyMessage) {

@@ -5,11 +5,9 @@ import com.dgsspa.comicverse.dto.MessageResponseDTO;
 import com.dgsspa.comicverse.dto.SearchResponseDTO;
 import com.dgsspa.comicverse.service.FumettoService;
 import org.springframework.http.HttpStatus;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -32,25 +30,16 @@ public class FumettoController {
         return fumettoService.recuperaFumettoPerId(id);
     }
 
-    @GetMapping("/ricerca/titolo")
-    public SearchResponseDTO<FumettoDTO> getFumettiPerTitolo(@RequestParam("titolo") String titolo) {
-        return fumettoService.cercaPerTitolo(titolo);
+    @GetMapping("/ricerca/filtri")
+    public SearchResponseDTO<FumettoDTO> getFumettiPerFiltri(
+            @RequestParam(required = false) String titolo) {
+        if (titolo == null) {
+            return fumettoService.stampaTuttiFumettiResponse();
+        }
+        return fumettoService.cercaPerFiltri(titolo);
     }
 
-    @GetMapping("/ricerca/data")
-    public SearchResponseDTO<FumettoDTO> getFumettiPubblicatiDopo(
-            @RequestParam("dopo") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dopo) {
-        return fumettoService.cercaPubblicatiData(dopo);
-    }
-
-    @GetMapping("/ricerca/titolo-data")
-    public SearchResponseDTO<FumettoDTO> getFumettiPerTitoloEDopo(
-            @RequestParam("titolo") String titolo,
-            @RequestParam("dopo") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dopo) {
-        return fumettoService.cercaPerTitoloEData(titolo, dopo);
-    }
-
-    @PostMapping("/crea")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public FumettoDTO creaNuovoFumetto(@Valid @RequestBody FumettoDTO fumettoDTO) {
         return fumettoService.inserisciNuovoFumetto(fumettoDTO);
@@ -63,7 +52,7 @@ public class FumettoController {
         return fumettoService.aggiornaFumetto(id, fumettoDTO);
     }
 
-    @DeleteMapping("/cancella/{id}")
+    @DeleteMapping("/elimina/{id}")
     public MessageResponseDTO eliminaFumetto(@PathVariable Integer id) {
         return new MessageResponseDTO(fumettoService.eliminaFumetto(id));
     }
