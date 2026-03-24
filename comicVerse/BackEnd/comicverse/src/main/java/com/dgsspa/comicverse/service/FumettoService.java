@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -92,14 +93,14 @@ public class FumettoService {
         return String.format(successMessagesProperties.getDeleted(), "Fumetto", id);
     }
 
-    public SearchResponseDTO<FumettoDTO> cercaPerFiltri(String titolo) {
+    public SearchResponseDTO<FumettoDTO> cercaPerFiltri(String titolo, LocalDateTime data) {
         log.debug("Ricerca fumetti per titolo={}", titolo);
-        List<FumettoDTO> risultati = fumettoRepository.searchByFiltri(titolo).stream()
+        List<FumettoDTO> risultati = fumettoRepository.searchByFiltri(titolo,data).stream()
                 .map(fumettoMapper::toDTO)
                 .collect(Collectors.toList());
         return buildSearchResponse(
                 risultati,
-                String.format(searchMessagesProperties.getNoResults(), titolo)
+                String.format(searchMessagesProperties.getNoResults(), titolo,data)
         );
     }
 
