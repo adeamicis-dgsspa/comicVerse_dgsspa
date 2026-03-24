@@ -4,8 +4,11 @@ import com.dgsspa.comicverse.dto.FumettoDTO;
 import com.dgsspa.comicverse.dto.MessageResponseDTO;
 import com.dgsspa.comicverse.dto.SearchResponseDTO;
 import com.dgsspa.comicverse.service.FumettoService;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import java.time.LocalDateTime;
+
 
 import javax.validation.Valid;
 import java.util.List;
@@ -32,11 +35,13 @@ public class FumettoController {
 
     @GetMapping("/ricerca/filtri")
     public SearchResponseDTO<FumettoDTO> getFumettiPerFiltri(
-            @RequestParam(required = false) String titolo) {
-        if (titolo == null) {
+            @RequestParam(required = false) String titolo,
+            @RequestParam(required = false)
+            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime data) {
+        if (titolo == null && data==null) {
             return fumettoService.stampaTuttiFumettiResponse();
         }
-        return fumettoService.cercaPerFiltri(titolo);
+        return fumettoService.cercaPerFiltri(titolo,data);
     }
 
     @PostMapping

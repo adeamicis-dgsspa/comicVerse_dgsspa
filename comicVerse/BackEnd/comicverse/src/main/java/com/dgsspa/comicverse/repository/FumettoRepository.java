@@ -4,6 +4,7 @@ import com.dgsspa.comicverse.model.Fumetto;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.TypedQuery;
+import java.time.LocalDateTime;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,19 +48,30 @@ public class FumettoRepository extends AbstractManagedRepository {
         });
     }
 
-    public List<Fumetto> searchByFiltri(String titolo) {
+    public List<Fumetto> searchByFiltri(String titolo, LocalDateTime data) {
         return withEntityManager(em -> {
-            StringBuilder jpql = new StringBuilder("SELECT f FROM Fumetto f WHERE 1=1");
+            StringBuilder jpql = new StringBuilder("SELECT f FROM Fumetto f");
             Map<String, Object> params = new LinkedHashMap<>();
+            boolean primoFiltro = true;
 
             if (titolo != null && !titolo.isBlank()) {
-                jpql.append(" AND LOWER(f.titolo) LIKE LOWER(CONCAT(:titolo, '%'))");
+                jpql.append(primoFiltro ? " WHERE" : " AND");
+                jpql.append(" LOWER(f.titolo) LIKE LOWER(CONCAT(:titolo, '%'))");
                 params.put("titolo", titolo);
+                primoFiltro = false;
+            }
+
+            if (data != null) {
+                jpql.append(primoFiltro ? " WHERE" : " AND");
+                jpql.append(" f.dataPubblicazione > :data");
+                params.put("data", data);
+                primoFiltro = false;
             }
 
             TypedQuery<Fumetto> query = em.createQuery(jpql.toString(), Fumetto.class);
             params.forEach(query::setParameter);
             return query.getResultList();
         });
+
     }
 }
