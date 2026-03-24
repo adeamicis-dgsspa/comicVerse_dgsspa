@@ -3,8 +3,10 @@ package com.dgsspa.comicverse.repository;
 import com.dgsspa.comicverse.model.Fumetto;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDateTime;
+import javax.persistence.TypedQuery;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Repository
@@ -42,6 +44,22 @@ public class FumettoRepository extends AbstractManagedRepository {
                 return true;
             }
             return false;
+        });
+    }
+
+    public List<Fumetto> searchByFiltri(String titolo) {
+        return withEntityManager(em -> {
+            StringBuilder jpql = new StringBuilder("SELECT f FROM Fumetto f WHERE 1=1");
+            Map<String, Object> params = new LinkedHashMap<>();
+
+            if (titolo != null && !titolo.isBlank()) {
+                jpql.append(" AND LOWER(f.titolo) LIKE LOWER(CONCAT(:titolo, '%'))");
+                params.put("titolo", titolo);
+            }
+
+            TypedQuery<Fumetto> query = em.createQuery(jpql.toString(), Fumetto.class);
+            params.forEach(query::setParameter);
+            return query.getResultList();
         });
     }
 }
