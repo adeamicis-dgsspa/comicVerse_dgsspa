@@ -21,10 +21,15 @@ public class ComicverseApplication {
 	public ApplicationRunner logWorkingDirectory(Environment environment) {
 		return args -> {
 			String workingDir = System.getProperty("user.dir");
-			String logFile = System.getProperty("logging.file.name");
 			log.info("Working directory: {}", workingDir);
-			if (logFile != null) {
-				log.info("Log file configured: {}", logFile);
+			String logFileName = environment.getProperty("logging.file.name");
+			String logFilePath = environment.getProperty("logging.file.path");
+			if (logFileName != null && !logFileName.isBlank()) {
+				log.info("Log file configured: {}", logFileName);
+			} else if (logFilePath != null && !logFilePath.isBlank()) {
+				log.info("Log path configured: {} (file: {}/comicverse.log)", logFilePath, logFilePath);
+			} else {
+				log.info("Log file path not set; using Logback defaults (logs/comicverse.log)");
 			}
 			String[] activeProfiles = environment.getActiveProfiles();
 			if (activeProfiles.length > 0) {
