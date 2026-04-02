@@ -38,10 +38,10 @@ public class FumettoController {
             @RequestParam(required = false) String titolo,
             @RequestParam(required = false)
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime data) {
-        if (titolo == null && data==null) {
-            return fumettoService.stampaTuttiFumettiResponse();
+        if (titolo != null && !titolo.isBlank() && data!=null && !data.toString().isBlank()) {
+            return fumettoService.cercaPerFiltri(titolo,data);
         }
-        return fumettoService.cercaPerFiltri(titolo,data);
+        return fumettoService.stampaTuttiFumettiResponse();
     }
 
     @PostMapping
