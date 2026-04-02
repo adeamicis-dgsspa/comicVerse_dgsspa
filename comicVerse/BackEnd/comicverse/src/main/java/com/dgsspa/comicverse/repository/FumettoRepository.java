@@ -63,7 +63,7 @@ public class FumettoRepository extends AbstractManagedRepository {
 
             if (data != null) {
                 jpql.append(primoFiltro ? " WHERE" : " AND");
-                jpql.append(" f.dataPubblicazione > :data");
+                jpql.append(" f.dataPubblicazione >= :data");
                 params.put("data", data);
                 primoFiltro = false;
             }

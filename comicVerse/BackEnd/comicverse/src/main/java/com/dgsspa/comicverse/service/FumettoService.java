@@ -46,18 +46,23 @@ public class FumettoService {
     }
 
     public List<FumettoDTO> stampaTuttiFumetti() {
-        log.debug("Recupero di tutti i fumetti");
-        return fumettoRepository.findAll().stream()
+        log.debug("Avvio recupero di tutti i fumetti");
+        List<FumettoDTO> risultati = fumettoRepository.findAll().stream()
                 .map(fumettoMapper::toDTO)
                 .collect(Collectors.toList());
+        log.info("Recupero completato: {} fumetti trovati", risultati.size());
+        return risultati;
     }
 
     public FumettoDTO recuperaFumettoPerId(Integer id) {
         log.debug("Recupero fumetto con id={}", id);
         return fumettoRepository.findById(id)
                 .map(fumettoMapper::toDTO)
-                .orElseThrow(() -> new ResourceNotFoundException(
-                        String.format(errorMessagesProperties.getFumettoId(), id)));
+                .orElseThrow(() -> {
+                    log.info("Fumetto non trovato durante recupero: id={}", id);
+                    return new ResourceNotFoundException(
+                            String.format(errorMessagesProperties.getFumettoId(), id));
+                });
     }
 
     @Transactional
@@ -65,7 +70,7 @@ public class FumettoService {
         log.debug("Inserimento nuovo fumetto: titolo={}", fumettoDTO.getTitolo());
         Fumetto fumetto = fumettoMapper.toEntity(fumettoDTO);
         Fumetto saved = fumettoRepository.save(fumetto);
-        log.info("Nuovo fumetto inserito con id={}", saved.getId());
+        log.info("Nuovo fumetto inserito con id={} titolo={}", saved.getId(), saved.getTitolo());
         return fumettoMapper.toDTO(saved);
     }
 
@@ -76,31 +81,38 @@ public class FumettoService {
                 .map(existing -> {
                     fumettoMapper.updateEntityFromDTO(fumettoDTO, existing);
                     Fumetto updated = fumettoRepository.save(existing);
-                    log.info("Fumetto aggiornato con id={}", updated.getId());
+                    log.info("Fumetto aggiornato con id={} titolo={}", updated.getId(), updated.getTitolo());
                     return fumettoMapper.toDTO(updated);
                 })
-                .orElseThrow(() -> new ResourceNotFoundException(
-                        String.format(errorMessagesProperties.getFumettoId(), id)));
+                .orElseThrow(() -> {
+                    log.info("Fumetto non trovato durante aggiornamento: id={}", id);
+                    return new ResourceNotFoundException(
+                            String.format(errorMessagesProperties.getFumettoId(), id));
+                });
     }
 
     @Transactional
     public String eliminaFumetto(Integer id) {
         log.debug("Eliminazione fumetto con id={}", id);
         if (!fumettoRepository.deleteById(id)) {
+            log.info("Fumetto non trovato durante eliminazione: id={}", id);
             throw new ResourceNotFoundException(
                     String.format(errorMessagesProperties.getFumettoId(), id));
         }
-        return String.format(successMessagesProperties.getDeleted(), "Fumetto", id);
+        String messaggio = String.format(successMessagesProperties.getDeleted(), "Fumetto", id);
+        log.info("Eliminazione completata: {}", messaggio);
+        return messaggio;
     }
 
     public SearchResponseDTO<FumettoDTO> cercaPerFiltri(String titolo, LocalDateTime data) {
-        log.debug("Ricerca fumetti per titolo={}", titolo);
-        List<FumettoDTO> risultati = fumettoRepository.searchByFiltri(titolo,data).stream()
+        log.debug("Ricerca fumetti per filtri: titolo={} data={}", titolo, data);
+        List<FumettoDTO> risultati = fumettoRepository.searchByFiltri(titolo, data).stream()
                 .map(fumettoMapper::toDTO)
                 .collect(Collectors.toList());
+        log.info("Ricerca completata: {} risultati per titolo={} data={}", risultati.size(), titolo, data);
         return buildSearchResponse(
                 risultati,
-                String.format(searchMessagesProperties.getNoResults(), titolo,data)
+                String.format(searchMessagesProperties.getNoResults(), titolo, data)
         );
     }
 

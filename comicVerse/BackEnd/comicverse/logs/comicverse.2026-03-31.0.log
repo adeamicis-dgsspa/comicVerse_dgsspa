@@ -1,0 +1,15 @@
+2026-03-31 15:16:49.367 INFO  [main] c.d.c.c.ComicverseApplicationTests - Starting ComicverseApplicationTests using Java 17.0.12 on DGS-302555 with PID 7004 (started by alessio.deamicis in C:\Users\alessio.deamicis\Documents\GitHub\comicVerse_dgsspa\comicVerse\BackEnd\comicverse)
+2026-03-31 15:16:49.368 DEBUG [main] c.d.c.c.ComicverseApplicationTests - Running with Spring Boot v2.7.18, Spring v5.3.31
+2026-03-31 15:16:49.370 INFO  [main] c.d.c.c.ComicverseApplicationTests - The following 1 profile is active: "dev"
+2026-03-31 15:16:49.403 INFO  [background-preinit] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+2026-03-31 15:16:55.611 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-31 15:16:55.739 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 70 ms. Found 0 JPA repository interfaces.
+2026-03-31 15:17:01.254 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
+2026-03-31 15:17:06.691 INFO  [main] o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2026-03-31 15:17:14.822 INFO  [main] org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.Oracle12cDialect
+2026-03-31 15:17:27.868 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2026-03-31 15:17:32.111 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-31 15:17:38.943 INFO  [main] o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+2026-03-31 15:17:39.130 INFO  [main] c.d.c.c.ComicverseApplicationTests - Started ComicverseApplicationTests in 51.974 seconds (JVM running for 56.596)
+2026-03-31 15:17:39.153 INFO  [main] c.d.comicverse.ComicverseApplication - Working directory: C:\Users\alessio.deamicis\Documents\GitHub\comicVerse_dgsspa\comicVerse\BackEnd\comicverse
+2026-03-31 15:17:39.158 INFO  [main] c.d.comicverse.ComicverseApplication - Active profiles: dev
