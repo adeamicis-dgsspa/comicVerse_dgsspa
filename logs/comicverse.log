@@ -37723,3 +37723,27 @@ Unconditional classes:
 2026-04-02 12:34:20.872 DEBUG [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [com.dgsspa.comicverse.exception.ErrorResult@45bfed3f]
 2026-04-02 12:34:20.873 WARN  [http-nio-8080-exec-8] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.dgsspa.comicverse.exception.ResourceNotFoundException: Fumetto non trovato con id: 35]
 2026-04-02 12:34:20.873 DEBUG [http-nio-8080-exec-8] o.s.o.j.s.OpenEntityManagerInViewInterceptor - Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-04-02 14:44:47.667 INFO  [File Watcher] o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-04-02 14:44:47.674 DEBUG [File Watcher] o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Change set: [C:\Users\alessio.deamicis\Documents\GitHub\comicVerse_dgsspa\comicVerse\BackEnd\comicverse\target\classes [C:\Users\alessio.deamicis\Documents\GitHub\comicVerse_dgsspa\comicVerse\BackEnd\comicverse\target\classes\application-dev.properties (MODIFY)]]
+2026-04-02 14:44:47.677 DEBUG [File Watcher] o.s.boot.devtools.restart.Restarter - Restarting application
+2026-04-02 14:44:47.681 DEBUG [Thread-6] o.s.boot.devtools.restart.Restarter - Stopping application
+2026-04-02 14:44:47.681 DEBUG [Thread-6] o.s.b.a.ApplicationAvailabilityBean - Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2026-04-02 14:44:47.684 DEBUG [Thread-6] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@6b327730, started on Thu Apr 02 12:25:15 CEST 2026
+2026-04-02 14:44:47.690 DEBUG [Thread-6] o.s.c.s.DefaultLifecycleProcessor - Stopping beans in phase 2147483647
+2026-04-02 14:44:47.697 DEBUG [Thread-6] o.s.c.s.DefaultLifecycleProcessor - Bean 'webServerGracefulShutdown' completed its stop procedure
+2026-04-02 14:44:47.698 DEBUG [Thread-6] o.s.c.s.DefaultLifecycleProcessor - Stopping beans in phase 2147483646
+2026-04-02 14:44:47.742 INFO  [Thread-6] o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2026-04-02 14:44:47.742 INFO  [Thread-6] o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-04-02 14:44:47.747 INFO  [Thread-6] o.a.c.c.C.[Tomcat].[localhost].[/] - Destroying Spring FrameworkServlet 'dispatcherServlet'
+2026-04-02 14:44:47.759 INFO  [Thread-6] o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2026-04-02 14:44:47.762 INFO  [Thread-6] o.a.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8080"]
+2026-04-02 14:44:47.764 DEBUG [Thread-6] o.s.c.s.DefaultLifecycleProcessor - Bean 'webServerStartStop' completed its stop procedure
+2026-04-02 14:44:47.764 DEBUG [Thread-6] o.s.c.s.DefaultLifecycleProcessor - Stopping beans in phase -2147483647
+2026-04-02 14:44:47.764 DEBUG [Thread-6] o.s.c.s.DefaultLifecycleProcessor - Bean 'springBootLoggingLifecycle' completed its stop procedure
+2026-04-02 14:44:47.772 DEBUG [Thread-6] o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2026-04-02 14:44:47.774 DEBUG [Thread-6] o.h.internal.SessionFactoryImpl - HHH000031: Closing
+2026-04-02 14:44:47.775 DEBUG [Thread-6] o.h.type.spi.TypeConfiguration$Scope - Un-scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration$Scope@35eda5f1] from SessionFactory [org.hibernate.internal.SessionFactoryImpl@21497b27]
+2026-04-02 14:44:47.775 DEBUG [Thread-6] o.h.s.i.AbstractServiceRegistryImpl - Implicitly destroying ServiceRegistry on de-registration of all child ServiceRegistries
+2026-04-02 14:44:47.778 DEBUG [Thread-6] o.h.b.r.i.BootstrapServiceRegistryImpl - Implicitly destroying Boot-strap registry on de-registration of all child ServiceRegistries
+2026-04-02 14:44:47.841 DEBUG [Thread-6] o.s.b.d.r.c.RestartClassLoader - Created RestartClassLoader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@1da1ccf3
+2026-04-02 14:44:47.841 DEBUG [Thread-6] o.s.boot.devtools.restart.Restarter - Starting application com.dgsspa.comicverse.ComicverseApplication with URLs [file:/C:/Users/alessio.deamicis/Documents/GitHub/comicVerse_dgsspa/comicVerse/BackEnd/comicverse/target/classes/]
