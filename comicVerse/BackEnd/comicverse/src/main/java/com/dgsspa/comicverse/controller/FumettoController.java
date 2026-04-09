@@ -1,5 +1,6 @@
 package com.dgsspa.comicverse.controller;
 
+import com.dgsspa.comicverse.dto.ApiResponseDTO;
 import com.dgsspa.comicverse.dto.FumettoDTO;
 import com.dgsspa.comicverse.dto.MessageResponseDTO;
 import com.dgsspa.comicverse.dto.SearchResponseDTO;
@@ -7,10 +8,9 @@ import com.dgsspa.comicverse.service.FumettoService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import java.time.LocalDateTime;
-
 
 import javax.validation.Valid;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -38,20 +38,20 @@ public class FumettoController {
             @RequestParam(required = false) String titolo,
             @RequestParam(required = false)
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime data) {
-        if (titolo != null && !titolo.isBlank() && data!=null && !data.toString().isBlank()) {
-            return fumettoService.cercaPerFiltri(titolo,data);
+        if (titolo != null && !titolo.isBlank() && data != null && !data.toString().isBlank()) {
+            return fumettoService.cercaPerFiltri(titolo, data);
         }
         return fumettoService.stampaTuttiFumettiResponse();
     }
 
     @PostMapping("/crea")
     @ResponseStatus(HttpStatus.CREATED)
-    public FumettoDTO creaNuovoFumetto(@Valid @RequestBody FumettoDTO fumettoDTO) {
+    public ApiResponseDTO<FumettoDTO> creaNuovoFumetto(@Valid @RequestBody FumettoDTO fumettoDTO) {
         return fumettoService.inserisciNuovoFumetto(fumettoDTO);
     }
 
     @PutMapping("/aggiorna/{id}")
-    public FumettoDTO aggiornaFumetto(
+    public ApiResponseDTO<FumettoDTO> aggiornaFumetto(
             @PathVariable Integer id,
             @Valid @RequestBody FumettoDTO fumettoDTO) {
         return fumettoService.aggiornaFumetto(id, fumettoDTO);

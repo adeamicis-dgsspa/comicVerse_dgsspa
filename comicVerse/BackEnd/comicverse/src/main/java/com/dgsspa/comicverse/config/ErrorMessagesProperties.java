@@ -7,13 +7,13 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "errors.not-found")
 public class ErrorMessagesProperties {
 
-    private String fumettoId;
+    private String notFound;
 
-    public String getFumettoId() {
-        return fumettoId;
+    public String getNotFound() {
+        return notFound;
     }
 
-    public void setFumettoId(String fumettoId) {
-        this.fumettoId = fumettoId;
+    public void setNotFound(String notFound) {
+        this.notFound = notFound;
     }
 }
