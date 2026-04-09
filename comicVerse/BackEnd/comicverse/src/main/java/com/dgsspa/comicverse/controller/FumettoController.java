@@ -44,7 +44,7 @@ public class FumettoController {
         return fumettoService.stampaTuttiFumettiResponse();
     }
 
-    @PostMapping
+    @PostMapping("/crea")
     @ResponseStatus(HttpStatus.CREATED)
     public FumettoDTO creaNuovoFumetto(@Valid @RequestBody FumettoDTO fumettoDTO) {
         return fumettoService.inserisciNuovoFumetto(fumettoDTO);
