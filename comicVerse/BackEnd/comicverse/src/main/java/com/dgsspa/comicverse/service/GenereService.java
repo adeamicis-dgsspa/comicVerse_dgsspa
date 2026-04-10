@@ -6,7 +6,9 @@ import com.dgsspa.comicverse.dto.ApiResponseDTO;
 import com.dgsspa.comicverse.dto.GenereDTO;
 import com.dgsspa.comicverse.exception.ResourceNotFoundException;
 import com.dgsspa.comicverse.mapper.GenereMapper;
+import com.dgsspa.comicverse.model.Fumetto;
 import com.dgsspa.comicverse.model.Genere;
+import com.dgsspa.comicverse.repository.FumettoRepository;
 import com.dgsspa.comicverse.repository.GenereRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,14 +25,18 @@ public class GenereService {
     private static final Logger log = LoggerFactory.getLogger(GenereService.class);
 
     private final GenereRepository genereRepository;
+    private final FumettoRepository fumettoRepository;
     private final GenereMapper genereMapper;
     private final ErrorMessagesProperties errorMessagesProperties;
     private final SuccessMessagesProperties successMessagesProperties;
 
-    public GenereService(GenereRepository genereRepository, GenereMapper genereMapper,
+    public GenereService(GenereRepository genereRepository,
+                         FumettoRepository fumettoRepository,
+                         GenereMapper genereMapper,
                          ErrorMessagesProperties errorMessagesProperties,
                          SuccessMessagesProperties successMessagesProperties) {
         this.genereRepository = genereRepository;
+        this.fumettoRepository = fumettoRepository;
         this.genereMapper = genereMapper;
         this.errorMessagesProperties = errorMessagesProperties;
         this.successMessagesProperties = successMessagesProperties;
@@ -49,6 +55,8 @@ public class GenereService {
     public ApiResponseDTO<GenereDTO> inserisciNuovoGenere(GenereDTO genereDTO) {
         log.debug("Inserimento nuovo genere: nome={}", genereDTO.getNome());
         Genere genere = genereMapper.toEntity(genereDTO);
+        List<Fumetto> fumetti = recuperaFumetti(genereDTO.getIdFumetti());
+        genere.setFumetti(fumetti);
         Genere saved = genereRepository.save(genere);
         log.info("Nuovo genere inserito con id={} nome={}", saved.getId(), saved.getNome());
         return new ApiResponseDTO<>(
@@ -63,6 +71,8 @@ public class GenereService {
         return genereRepository.findById(id)
                 .map(existing -> {
                     genereMapper.updateEntityFromDTO(genereDTO, existing);
+                    List<Fumetto> fumetti = recuperaFumetti(genereDTO.getIdFumetti());
+                    existing.setFumetti(fumetti);
                     Genere updated = genereRepository.save(existing);
                     log.info("Genere aggiornato con id={} nome={}", updated.getId(), updated.getNome());
                     return new ApiResponseDTO<>(
@@ -88,5 +98,13 @@ public class GenereService {
         String messaggio = String.format(successMessagesProperties.getDeleted(), "Genere", id);
         log.info("Eliminazione completata: {}", messaggio);
         return messaggio;
+    }
+
+    private List<Fumetto> recuperaFumetti(List<Integer> idFumetti) {
+        return idFumetti.stream()
+                .map(idFumetto -> fumettoRepository.findById(idFumetto)
+                        .orElseThrow(() -> new ResourceNotFoundException(
+                                String.format(errorMessagesProperties.getNotFound(), "Fumetto", idFumetto))))
+                .collect(Collectors.toList());
     }
 }

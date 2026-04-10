@@ -1,0 +1,142 @@
+2026-04-10 00:00:31.317 INFO  [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-10 00:00:31.390 DEBUG [http-nio-8080-exec-1] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.dgsspa.comicverse.controller.GenereController#creaNuovoGenere(GenereDTO)
+2026-04-10 00:00:31.401 DEBUG [http-nio-8080-exec-1] o.s.o.j.s.OpenEntityManagerInViewInterceptor - Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-04-10 00:00:31.538 DEBUG [http-nio-8080-exec-1] o.h.s.internal.StatisticsInitiator - Statistics initialized [enabled=false]
+2026-04-10 00:00:31.905 DEBUG [http-nio-8080-exec-1] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json;charset=UTF-8" to [com.dgsspa.comicverse.dto.GenereDTO@464912de]
+2026-04-10 00:00:32.054 DEBUG [http-nio-8080-exec-1] o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(239738235<open>)] for JPA transaction
+2026-04-10 00:00:32.055 DEBUG [http-nio-8080-exec-1] o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [com.dgsspa.comicverse.service.GenereService.inserisciNuovoGenere]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-04-10 00:00:32.062 DEBUG [http-nio-8080-exec-1] o.h.e.t.internal.TransactionImpl - On TransactionImpl creation, JpaCompliance#isJpaTransactionComplianceEnabled == false
+2026-04-10 00:00:32.062 DEBUG [http-nio-8080-exec-1] o.h.e.t.internal.TransactionImpl - begin
+2026-04-10 00:00:32.062 DEBUG [http-nio-8080-exec-1] o.s.j.d.DriverManagerDataSource - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@//localhost:1521/XEPDB1]
+2026-04-10 00:00:32.256 DEBUG [http-nio-8080-exec-1] c.d.comicverse.service.GenereService - Inserimento nuovo genere: nome=Manga
+2026-04-10 00:00:32.334 DEBUG [http-nio-8080-exec-1] org.hibernate.SQL - select S_GENERE.nextval from dual
+2026-04-10 00:00:32.353 DEBUG [http-nio-8080-exec-1] o.h.id.enhanced.SequenceStructure - Sequence value obtained: 1
+2026-04-10 00:00:32.353 DEBUG [http-nio-8080-exec-1] o.h.r.j.i.ResourceRegistryStandardImpl - HHH000387: ResultSet's statement was not registered
+2026-04-10 00:00:32.354 DEBUG [http-nio-8080-exec-1] o.h.e.i.AbstractSaveEventListener - Generated identifier: 1, using strategy: org.hibernate.id.enhanced.SequenceStyleGenerator
+2026-04-10 00:00:32.435 INFO  [http-nio-8080-exec-1] c.d.comicverse.service.GenereService - Nuovo genere inserito con id=1 nome=Manga
+2026-04-10 00:00:32.437 DEBUG [http-nio-8080-exec-1] o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2026-04-10 00:00:32.437 DEBUG [http-nio-8080-exec-1] o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(239738235<open>)]
+2026-04-10 00:00:32.437 DEBUG [http-nio-8080-exec-1] o.h.e.t.internal.TransactionImpl - committing
+2026-04-10 00:00:32.439 DEBUG [http-nio-8080-exec-1] o.h.e.i.AbstractFlushingEventListener - Processing flush-time cascades
+2026-04-10 00:00:32.441 DEBUG [http-nio-8080-exec-1] o.h.e.i.AbstractFlushingEventListener - Dirty checking collections
+2026-04-10 00:00:32.467 DEBUG [http-nio-8080-exec-1] o.h.engine.internal.Collections - Collection found: [com.dgsspa.comicverse.model.Genere.fumetti#1], was: [<unreferenced>] (initialized)
+2026-04-10 00:00:32.471 DEBUG [http-nio-8080-exec-1] o.h.e.i.AbstractFlushingEventListener - Flushed: 1 insertions, 0 updates, 0 deletions to 1 objects
+2026-04-10 00:00:32.471 DEBUG [http-nio-8080-exec-1] o.h.e.i.AbstractFlushingEventListener - Flushed: 1 (re)creations, 0 updates, 0 removals to 1 collections
+2026-04-10 00:00:32.473 DEBUG [http-nio-8080-exec-1] o.h.internal.util.EntityPrinter - Listing entities:
+2026-04-10 00:00:32.473 DEBUG [http-nio-8080-exec-1] o.h.internal.util.EntityPrinter - com.dgsspa.comicverse.model.Genere{fumetti=[], nome=Manga, id=1}
+2026-04-10 00:00:32.521 DEBUG [http-nio-8080-exec-1] org.hibernate.SQL - insert into GENERE (nome, ID_GENERE) values (?, ?)
+2026-04-10 00:00:32.673 DEBUG [http-nio-8080-exec-1] o.h.p.c.AbstractCollectionPersister - Inserting collection: [com.dgsspa.comicverse.model.Genere.fumetti#1]
+2026-04-10 00:00:32.673 DEBUG [http-nio-8080-exec-1] o.h.p.c.AbstractCollectionPersister - Collection was empty
+2026-04-10 00:00:32.690 DEBUG [http-nio-8080-exec-1] o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2026-04-10 00:00:32.773 DEBUG [http-nio-8080-exec-1] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2026-04-10 00:00:32.775 DEBUG [http-nio-8080-exec-1] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [com.dgsspa.comicverse.dto.ApiResponseDTO@17e81f85]
+2026-04-10 00:00:32.817 DEBUG [http-nio-8080-exec-1] o.s.o.j.s.OpenEntityManagerInViewInterceptor - Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-04-10 00:00:32.817 DEBUG [http-nio-8080-exec-1] o.h.e.j.internal.JdbcCoordinatorImpl - HHH000420: Closing un-released batch
+2026-04-10 00:01:53.493 DEBUG [http-nio-8080-exec-6] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.dgsspa.comicverse.controller.GenereController#aggiornaGenere(Integer, GenereDTO)
+2026-04-10 00:01:53.496 DEBUG [http-nio-8080-exec-6] o.s.o.j.s.OpenEntityManagerInViewInterceptor - Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-04-10 00:01:53.520 DEBUG [http-nio-8080-exec-6] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json;charset=UTF-8" to [com.dgsspa.comicverse.dto.GenereDTO@a429edf]
+2026-04-10 00:01:53.521 DEBUG [http-nio-8080-exec-6] o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1064278177<open>)] for JPA transaction
+2026-04-10 00:01:53.521 DEBUG [http-nio-8080-exec-6] o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [com.dgsspa.comicverse.service.GenereService.aggiornaGenere]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-04-10 00:01:53.521 DEBUG [http-nio-8080-exec-6] o.h.e.t.internal.TransactionImpl - On TransactionImpl creation, JpaCompliance#isJpaTransactionComplianceEnabled == false
+2026-04-10 00:01:53.521 DEBUG [http-nio-8080-exec-6] o.h.e.t.internal.TransactionImpl - begin
+2026-04-10 00:01:53.521 DEBUG [http-nio-8080-exec-6] o.s.j.d.DriverManagerDataSource - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@//localhost:1521/XEPDB1]
+2026-04-10 00:01:53.610 DEBUG [http-nio-8080-exec-6] c.d.comicverse.service.GenereService - Aggiornamento genere con id=1
+2026-04-10 00:01:53.637 DEBUG [http-nio-8080-exec-6] org.hibernate.SQL - select genere0_.ID_GENERE as id_genere1_1_0_, genere0_.nome as nome2_1_0_ from GENERE genere0_ where genere0_.ID_GENERE=?
+2026-04-10 00:01:53.645 DEBUG [http-nio-8080-exec-6] o.h.l.p.e.p.i.EntityReferenceInitializerImpl - On call to EntityIdentifierReaderImpl#resolve, EntityKey was already known; should only happen on root returns with an optional identifier specified
+2026-04-10 00:01:53.660 DEBUG [http-nio-8080-exec-6] o.h.engine.internal.TwoPhaseLoad - Resolving attributes for [com.dgsspa.comicverse.model.Genere#1]
+2026-04-10 00:01:53.660 DEBUG [http-nio-8080-exec-6] o.h.engine.internal.TwoPhaseLoad - Processing attribute `fumetti` : value = NOT NULL COLLECTION
+2026-04-10 00:01:53.661 DEBUG [http-nio-8080-exec-6] o.h.engine.internal.TwoPhaseLoad - Attribute (`fumetti`)  - enhanced for lazy-loading? - false
+2026-04-10 00:01:53.664 DEBUG [http-nio-8080-exec-6] o.h.engine.internal.TwoPhaseLoad - Processing attribute `nome` : value = Manga
+2026-04-10 00:01:53.665 DEBUG [http-nio-8080-exec-6] o.h.engine.internal.TwoPhaseLoad - Attribute (`nome`)  - enhanced for lazy-loading? - false
+2026-04-10 00:01:53.667 DEBUG [http-nio-8080-exec-6] o.h.engine.internal.TwoPhaseLoad - Done materializing entity [com.dgsspa.comicverse.model.Genere#1]
+2026-04-10 00:01:53.670 DEBUG [http-nio-8080-exec-6] o.h.l.e.p.AbstractLoadPlanBasedEntityLoader - Done entity load : com.dgsspa.comicverse.model.Genere#1
+2026-04-10 00:01:53.677 DEBUG [http-nio-8080-exec-6] o.h.l.c.p.AbstractLoadPlanBasedCollectionInitializer - Loading collection: [com.dgsspa.comicverse.model.Genere.fumetti#1]
+2026-04-10 00:01:53.677 DEBUG [http-nio-8080-exec-6] org.hibernate.SQL - select fumetti0_.FK_GENERE as fk_genere1_2_0_, fumetti0_.FK_FUMETTO as fk_fumetto2_2_0_, fumetto1_.ID_FUMETTO as id_fumetto1_0_1_, fumetto1_.DATA_PUBBLICAZIONE as data_pubblicazione2_0_1_, fumetto1_.descrizione as descrizione3_0_1_, fumetto1_.editore as editore4_0_1_, fumetto1_.titolo as titolo5_0_1_, fumetto1_.volume as volume6_0_1_ from GENERE_FUMETTO fumetti0_ inner join FUMETTO fumetto1_ on fumetti0_.FK_FUMETTO=fumetto1_.ID_FUMETTO where fumetti0_.FK_GENERE=?
+2026-04-10 00:01:53.692 DEBUG [http-nio-8080-exec-6] o.h.l.p.e.p.i.ResultSetProcessorImpl - Preparing collection initializer : [com.dgsspa.comicverse.model.Genere.fumetti#1]
+2026-04-10 00:01:53.701 DEBUG [http-nio-8080-exec-6] o.h.e.l.i.CollectionLoadContext - 1 collections were found in result set for role: com.dgsspa.comicverse.model.Genere.fumetti
+2026-04-10 00:01:53.701 DEBUG [http-nio-8080-exec-6] o.h.e.l.i.CollectionLoadContext - Collection fully initialized: [com.dgsspa.comicverse.model.Genere.fumetti#1]
+2026-04-10 00:01:53.702 DEBUG [http-nio-8080-exec-6] o.h.e.l.i.CollectionLoadContext - 1 collections initialized for role: com.dgsspa.comicverse.model.Genere.fumetti
+2026-04-10 00:01:53.703 DEBUG [http-nio-8080-exec-6] o.h.l.c.p.AbstractLoadPlanBasedCollectionInitializer - Done loading collection
+2026-04-10 00:01:53.705 DEBUG [http-nio-8080-exec-6] o.h.e.i.EntityCopyObserverFactoryInitiator - Configured EntityCopyObserver strategy: disallow
+2026-04-10 00:01:53.715 INFO  [http-nio-8080-exec-6] c.d.comicverse.service.GenereService - Genere aggiornato con id=1 nome=Noir
+2026-04-10 00:01:53.718 DEBUG [http-nio-8080-exec-6] o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2026-04-10 00:01:53.718 DEBUG [http-nio-8080-exec-6] o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(1064278177<open>)]
+2026-04-10 00:01:53.718 DEBUG [http-nio-8080-exec-6] o.h.e.t.internal.TransactionImpl - committing
+2026-04-10 00:01:53.718 DEBUG [http-nio-8080-exec-6] o.h.e.i.AbstractFlushingEventListener - Processing flush-time cascades
+2026-04-10 00:01:53.718 DEBUG [http-nio-8080-exec-6] o.h.e.i.AbstractFlushingEventListener - Dirty checking collections
+2026-04-10 00:01:53.719 DEBUG [http-nio-8080-exec-6] o.h.engine.internal.Collections - Collection found: [com.dgsspa.comicverse.model.Genere.fumetti#1], was: [com.dgsspa.comicverse.model.Genere.fumetti#1] (initialized)
+2026-04-10 00:01:53.720 DEBUG [http-nio-8080-exec-6] o.h.e.i.AbstractFlushingEventListener - Flushed: 0 insertions, 1 updates, 0 deletions to 1 objects
+2026-04-10 00:01:53.720 DEBUG [http-nio-8080-exec-6] o.h.e.i.AbstractFlushingEventListener - Flushed: 0 (re)creations, 0 updates, 0 removals to 1 collections
+2026-04-10 00:01:53.722 DEBUG [http-nio-8080-exec-6] o.h.internal.util.EntityPrinter - Listing entities:
+2026-04-10 00:01:53.722 DEBUG [http-nio-8080-exec-6] o.h.internal.util.EntityPrinter - com.dgsspa.comicverse.model.Genere{fumetti=[], nome=Noir, id=1}
+2026-04-10 00:01:53.723 DEBUG [http-nio-8080-exec-6] org.hibernate.SQL - update GENERE set nome=? where ID_GENERE=?
+2026-04-10 00:01:53.742 DEBUG [http-nio-8080-exec-6] o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2026-04-10 00:01:53.743 DEBUG [http-nio-8080-exec-6] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2026-04-10 00:01:53.743 DEBUG [http-nio-8080-exec-6] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [com.dgsspa.comicverse.dto.ApiResponseDTO@73e592b8]
+2026-04-10 00:01:53.748 DEBUG [http-nio-8080-exec-6] o.s.o.j.s.OpenEntityManagerInViewInterceptor - Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-04-10 00:01:53.749 DEBUG [http-nio-8080-exec-6] o.h.e.j.internal.JdbcCoordinatorImpl - HHH000420: Closing un-released batch
+2026-04-10 00:04:03.461 DEBUG [http-nio-8080-exec-8] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Using @ExceptionHandler com.dgsspa.comicverse.exception.handler.GenericExceptionHandler#handleGenericException(Exception, HttpServletRequest)
+2026-04-10 00:04:03.462 ERROR [http-nio-8080-exec-8] c.d.c.e.h.GenericExceptionHandler - Errore non gestito su PUT /api/genere/elimina/1 - org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'PUT' not supported
+2026-04-10 00:04:03.476 DEBUG [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2026-04-10 00:04:03.477 DEBUG [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [com.dgsspa.comicverse.exception.ErrorResult@301a478d]
+2026-04-10 00:04:03.477 WARN  [http-nio-8080-exec-8] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'PUT' not supported]
+2026-04-10 00:04:15.026 DEBUG [http-nio-8080-exec-10] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Using @ExceptionHandler com.dgsspa.comicverse.exception.handler.GenericExceptionHandler#handleGenericException(Exception, HttpServletRequest)
+2026-04-10 00:04:15.026 ERROR [http-nio-8080-exec-10] c.d.c.e.h.GenericExceptionHandler - Errore non gestito su PUT /api/genere/elimina/1 - org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'PUT' not supported
+2026-04-10 00:04:15.027 DEBUG [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2026-04-10 00:04:15.027 DEBUG [http-nio-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [com.dgsspa.comicverse.exception.ErrorResult@379360b2]
+2026-04-10 00:04:15.027 WARN  [http-nio-8080-exec-10] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'PUT' not supported]
+2026-04-10 00:04:35.620 DEBUG [http-nio-8080-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Using @ExceptionHandler com.dgsspa.comicverse.exception.handler.GenericExceptionHandler#handleGenericException(Exception, HttpServletRequest)
+2026-04-10 00:04:35.622 ERROR [http-nio-8080-exec-1] c.d.c.e.h.GenericExceptionHandler - Errore non gestito su PUT /api/genere/elimina/1 - org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'PUT' not supported
+2026-04-10 00:04:35.622 DEBUG [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2026-04-10 00:04:35.622 DEBUG [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [com.dgsspa.comicverse.exception.ErrorResult@12d12b1b]
+2026-04-10 00:04:35.623 WARN  [http-nio-8080-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'PUT' not supported]
+2026-04-10 00:04:57.604 DEBUG [http-nio-8080-exec-4] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.dgsspa.comicverse.controller.GenereController#eliminaGenere(Integer)
+2026-04-10 00:04:57.604 DEBUG [http-nio-8080-exec-4] o.s.o.j.s.OpenEntityManagerInViewInterceptor - Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-04-10 00:04:57.606 DEBUG [http-nio-8080-exec-4] o.s.orm.jpa.JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(704983278<open>)] for JPA transaction
+2026-04-10 00:04:57.606 DEBUG [http-nio-8080-exec-4] o.s.orm.jpa.JpaTransactionManager - Creating new transaction with name [com.dgsspa.comicverse.service.GenereService.eliminaGenere]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-04-10 00:04:57.606 DEBUG [http-nio-8080-exec-4] o.h.e.t.internal.TransactionImpl - On TransactionImpl creation, JpaCompliance#isJpaTransactionComplianceEnabled == false
+2026-04-10 00:04:57.606 DEBUG [http-nio-8080-exec-4] o.h.e.t.internal.TransactionImpl - begin
+2026-04-10 00:04:57.606 DEBUG [http-nio-8080-exec-4] o.s.j.d.DriverManagerDataSource - Creating new JDBC DriverManager Connection to [jdbc:oracle:thin:@//localhost:1521/XEPDB1]
+2026-04-10 00:04:57.666 DEBUG [http-nio-8080-exec-4] c.d.comicverse.service.GenereService - Eliminazione genere con id=1
+2026-04-10 00:04:57.669 DEBUG [http-nio-8080-exec-4] org.hibernate.SQL - select genere0_.ID_GENERE as id_genere1_1_0_, genere0_.nome as nome2_1_0_ from GENERE genere0_ where genere0_.ID_GENERE=?
+2026-04-10 00:04:57.672 DEBUG [http-nio-8080-exec-4] o.h.l.p.e.p.i.EntityReferenceInitializerImpl - On call to EntityIdentifierReaderImpl#resolve, EntityKey was already known; should only happen on root returns with an optional identifier specified
+2026-04-10 00:04:57.672 DEBUG [http-nio-8080-exec-4] o.h.engine.internal.TwoPhaseLoad - Resolving attributes for [com.dgsspa.comicverse.model.Genere#1]
+2026-04-10 00:04:57.672 DEBUG [http-nio-8080-exec-4] o.h.engine.internal.TwoPhaseLoad - Processing attribute `fumetti` : value = NOT NULL COLLECTION
+2026-04-10 00:04:57.672 DEBUG [http-nio-8080-exec-4] o.h.engine.internal.TwoPhaseLoad - Attribute (`fumetti`)  - enhanced for lazy-loading? - false
+2026-04-10 00:04:57.672 DEBUG [http-nio-8080-exec-4] o.h.engine.internal.TwoPhaseLoad - Processing attribute `nome` : value = Noir
+2026-04-10 00:04:57.672 DEBUG [http-nio-8080-exec-4] o.h.engine.internal.TwoPhaseLoad - Attribute (`nome`)  - enhanced for lazy-loading? - false
+2026-04-10 00:04:57.673 DEBUG [http-nio-8080-exec-4] o.h.engine.internal.TwoPhaseLoad - Done materializing entity [com.dgsspa.comicverse.model.Genere#1]
+2026-04-10 00:04:57.673 DEBUG [http-nio-8080-exec-4] o.h.l.e.p.AbstractLoadPlanBasedEntityLoader - Done entity load : com.dgsspa.comicverse.model.Genere#1
+2026-04-10 00:04:57.676 INFO  [http-nio-8080-exec-4] c.d.comicverse.service.GenereService - Eliminazione completata: Genere con id 1 eliminato correttamente
+2026-04-10 00:04:57.676 DEBUG [http-nio-8080-exec-4] o.s.orm.jpa.JpaTransactionManager - Initiating transaction commit
+2026-04-10 00:04:57.677 DEBUG [http-nio-8080-exec-4] o.s.orm.jpa.JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(704983278<open>)]
+2026-04-10 00:04:57.677 DEBUG [http-nio-8080-exec-4] o.h.e.t.internal.TransactionImpl - committing
+2026-04-10 00:04:57.677 DEBUG [http-nio-8080-exec-4] o.h.e.i.AbstractFlushingEventListener - Processing flush-time cascades
+2026-04-10 00:04:57.677 DEBUG [http-nio-8080-exec-4] o.h.e.i.AbstractFlushingEventListener - Dirty checking collections
+2026-04-10 00:04:57.677 DEBUG [http-nio-8080-exec-4] o.h.engine.internal.Collections - Collection dereferenced: [com.dgsspa.comicverse.model.Genere.fumetti#1]
+2026-04-10 00:04:57.677 DEBUG [http-nio-8080-exec-4] o.h.e.i.AbstractFlushingEventListener - Flushed: 0 insertions, 0 updates, 1 deletions to 1 objects
+2026-04-10 00:04:57.677 DEBUG [http-nio-8080-exec-4] o.h.e.i.AbstractFlushingEventListener - Flushed: 0 (re)creations, 0 updates, 1 removals to 1 collections
+2026-04-10 00:04:57.677 DEBUG [http-nio-8080-exec-4] o.h.internal.util.EntityPrinter - Listing entities:
+2026-04-10 00:04:57.678 DEBUG [http-nio-8080-exec-4] o.h.internal.util.EntityPrinter - com.dgsspa.comicverse.model.Genere{fumetti=<uninitialized>, nome=Noir, id=1}
+2026-04-10 00:04:57.679 DEBUG [http-nio-8080-exec-4] o.h.p.c.AbstractCollectionPersister - Deleting collection: [com.dgsspa.comicverse.model.Genere.fumetti#1]
+2026-04-10 00:04:57.679 DEBUG [http-nio-8080-exec-4] org.hibernate.SQL - delete from GENERE_FUMETTO where FK_GENERE=?
+2026-04-10 00:04:57.689 DEBUG [http-nio-8080-exec-4] o.h.p.c.AbstractCollectionPersister - Done deleting collection
+2026-04-10 00:04:57.692 DEBUG [http-nio-8080-exec-4] org.hibernate.SQL - delete from GENERE where ID_GENERE=?
+2026-04-10 00:04:57.705 DEBUG [http-nio-8080-exec-4] o.s.orm.jpa.JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+2026-04-10 00:04:57.706 DEBUG [http-nio-8080-exec-4] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2026-04-10 00:04:57.706 DEBUG [http-nio-8080-exec-4] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [com.dgsspa.comicverse.dto.MessageResponseDTO@7f461241]
+2026-04-10 00:04:57.707 DEBUG [http-nio-8080-exec-4] o.s.o.j.s.OpenEntityManagerInViewInterceptor - Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-04-10 00:04:57.707 DEBUG [http-nio-8080-exec-4] o.h.e.j.internal.JdbcCoordinatorImpl - HHH000420: Closing un-released batch
+2026-04-10 00:06:34.365 DEBUG [SpringApplicationShutdownHook] o.s.b.a.ApplicationAvailabilityBean - Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2026-04-10 00:06:34.366 DEBUG [SpringApplicationShutdownHook] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@30fe827c, started on Thu Apr 09 23:32:06 CEST 2026
+2026-04-10 00:06:34.370 DEBUG [SpringApplicationShutdownHook] o.s.c.s.DefaultLifecycleProcessor - Stopping beans in phase 2147483647
+2026-04-10 00:06:34.372 DEBUG [SpringApplicationShutdownHook] o.s.c.s.DefaultLifecycleProcessor - Bean 'webServerGracefulShutdown' completed its stop procedure
+2026-04-10 00:06:34.372 DEBUG [SpringApplicationShutdownHook] o.s.c.s.DefaultLifecycleProcessor - Stopping beans in phase 2147483646
+2026-04-10 00:06:34.409 DEBUG [SpringApplicationShutdownHook] o.s.c.s.DefaultLifecycleProcessor - Bean 'webServerStartStop' completed its stop procedure
+2026-04-10 00:06:34.409 DEBUG [SpringApplicationShutdownHook] o.s.c.s.DefaultLifecycleProcessor - Stopping beans in phase -2147483647
+2026-04-10 00:06:34.409 DEBUG [SpringApplicationShutdownHook] o.s.c.s.DefaultLifecycleProcessor - Bean 'springBootLoggingLifecycle' completed its stop procedure
+2026-04-10 00:06:34.412 DEBUG [SpringApplicationShutdownHook] o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2026-04-10 00:06:34.414 DEBUG [SpringApplicationShutdownHook] o.h.internal.SessionFactoryImpl - HHH000031: Closing
+2026-04-10 00:06:34.414 DEBUG [SpringApplicationShutdownHook] o.h.type.spi.TypeConfiguration$Scope - Un-scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration$Scope@5555691d] from SessionFactory [org.hibernate.internal.SessionFactoryImpl@3fb59557]
+2026-04-10 00:06:34.414 DEBUG [SpringApplicationShutdownHook] o.h.s.i.AbstractServiceRegistryImpl - Implicitly destroying ServiceRegistry on de-registration of all child ServiceRegistries
+2026-04-10 00:06:34.414 DEBUG [SpringApplicationShutdownHook] o.h.b.r.i.BootstrapServiceRegistryImpl - Implicitly destroying Boot-strap registry on de-registration of all child ServiceRegistries
