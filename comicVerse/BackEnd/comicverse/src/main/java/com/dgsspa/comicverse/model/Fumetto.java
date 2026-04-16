@@ -24,8 +24,8 @@ public class Fumetto {
 
     private String descrizione;
 
-    /*@OneToOne(mappedBy = "fumetto", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Inventario inventario;*/
+    @OneToOne(mappedBy = "fumetto", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Inventario inventario;
 
     /*@ManyToMany(fetch= FetchType.LAZY)
     @JoinTable(
