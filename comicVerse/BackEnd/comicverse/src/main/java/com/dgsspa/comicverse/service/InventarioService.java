@@ -7,6 +7,7 @@ import com.dgsspa.comicverse.dto.InventarioDTO;
 import com.dgsspa.comicverse.exception.ResourceNotFoundException;
 import com.dgsspa.comicverse.mapper.InventarioMapper;
 import com.dgsspa.comicverse.model.Fumetto;
+
 import com.dgsspa.comicverse.model.Inventario;
 import com.dgsspa.comicverse.repository.FumettoRepository;
 import com.dgsspa.comicverse.repository.InventarioRepository;
@@ -22,8 +23,7 @@ import java.util.stream.Collectors;
 @Transactional(readOnly = true)
 public class InventarioService {
 
-    private static final Logger log = LoggerFactory.getLogger(InventarioService.class); // ✅ fisso
-
+    private static final Logger log = LoggerFactory.getLogger(InventarioService.class);
     private final InventarioRepository inventarioRepository;
     private final FumettoRepository fumettoRepository;
     private final InventarioMapper inventarioMapper;
@@ -50,19 +50,29 @@ public class InventarioService {
         log.info("Recupero completato: {} articoli trovati", risultati.size());
         return risultati;
     }
+    public InventarioDTO recuperaArticoloPerId(Integer id) {
+        log.debug("Recupero articolo con id={}", id);
+        return inventarioRepository.findById(id)
+                .map(inventarioMapper::toDTO)
+                .orElseThrow(() -> {
+                    log.info("Articolo non trovato durante recupero: id={}", id);
+                    return new ResourceNotFoundException(
+                            String.format(errorMessagesProperties.getNotFound(), "Articolo", id));
+                });
+    }
 
     @Transactional
     public ApiResponseDTO<InventarioDTO> inserisciNuovoArticolo(InventarioDTO inventarioDTO) {
-        log.debug("Inserimento nuovo articolo: nome={}", inventarioDTO.getNome());
+        log.debug("Inserimento nuovo articolo:");
         Inventario inventario = inventarioMapper.toEntity(inventarioDTO);
         Fumetto fumetto = fumettoRepository.findById(inventarioDTO.getIdFumetto())
                 .orElseThrow(() -> new ResourceNotFoundException("Fumetto non trovato"));
         inventario.setFumetto(fumetto);
         Inventario saved = inventarioRepository.save(inventario);
-        log.info("Nuovo articolo inserito con id={} nome={}", saved.getId(), saved.getNome());
+        log.info("Nuovo articolo inserito con id={}", saved.getId());
         return new ApiResponseDTO<>(
                 inventarioMapper.toDTO(saved),
-                String.format(successMessagesProperties.getCreated(), "Inventario")
+                String.format(successMessagesProperties.getCreated(), "Articolo")
         );
     }
 
@@ -74,31 +84,32 @@ public class InventarioService {
                     inventarioMapper.updateEntityFromDTO(inventarioDTO, existing);
                     Fumetto fumetto = fumettoRepository.findById(inventarioDTO.getIdFumetto())
                             .orElseThrow(() -> new ResourceNotFoundException("Fumetto non trovato"));
-                    existing.setFumetto(fumetto); // ✅ setFumetto non setFumetti
+                    existing.setFumetto(fumetto);
                     Inventario updated = inventarioRepository.save(existing);
-                    log.info("Articolo aggiornato con id={} nome={}", updated.getId(), updated.getNome());
+                    log.info("Articolo aggiornato con id={}", updated.getId());
                     return new ApiResponseDTO<>(
                             inventarioMapper.toDTO(updated),
-                            String.format(successMessagesProperties.getUpdated(), "Inventario")
+                            String.format(successMessagesProperties.getUpdated(), "Articolo")
                     );
                 })
                 .orElseThrow(() -> {
                     log.info("Articolo non trovato durante aggiornamento: id={}", id);
                     return new ResourceNotFoundException(
-                            String.format(errorMessagesProperties.getNotFound(), "Inventario", id));
+                            String.format(errorMessagesProperties.getNotFound(), "Articolo", id));
                 });
     }
-
     @Transactional
     public String eliminaArticolo(Integer id) {
         log.debug("Eliminazione articolo con id={}", id);
         if (!inventarioRepository.deleteById(id)) {
             log.info("Articolo non trovato durante eliminazione: id={}", id);
             throw new ResourceNotFoundException(
-                    String.format(errorMessagesProperties.getNotFound(), "Inventario", id));
+                    String.format(errorMessagesProperties.getNotFound(), "Articolo", id));
         }
-        String messaggio = String.format(successMessagesProperties.getDeleted(), "Inventario", id);
+        String messaggio = String.format(successMessagesProperties.getDeleted(), "Articolo", id);
         log.info("Eliminazione completata: {}", messaggio);
         return messaggio;
     }
-}
+
+    }
+

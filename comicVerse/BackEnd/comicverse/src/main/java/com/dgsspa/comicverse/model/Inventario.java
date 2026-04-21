@@ -1,6 +1,7 @@
 package com.dgsspa.comicverse.model;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -19,7 +20,7 @@ public class Inventario {
     private Fumetto fumetto;
 
     @Column(name = "PREZZO_VENDITA")
-    private Float prezzoVendita;
+    private BigDecimal prezzoVendita;
 
     @Column(name = "GIACENZA")
     private Integer giacenza;
@@ -36,13 +37,13 @@ public class Inventario {
 
     public Integer getId() { return id; }
     public Fumetto getFumetto() { return fumetto; }
-    public Float getPrezzoVendita() { return prezzoVendita; }
+    public BigDecimal getPrezzoVendita() { return prezzoVendita; }
     public Integer getGiacenza() { return giacenza; }
     /*public List<Vendita> getVendite() { return vendite; }*/
 
     public void setId(Integer id) { this.id = id; }
     public void setFumetto(Fumetto fumetto) { this.fumetto = fumetto; }
-    public void setPrezzoVendita(Float prezzoVendita) { this.prezzoVendita = prezzoVendita; }
+    public void setPrezzoVendita(BigDecimal prezzoVendita) { this.prezzoVendita = prezzoVendita; }
     public void setGiacenza(Integer giacenza) { this.giacenza = giacenza; }
     /*public void setVendite(List<Vendita> vendite) { this.vendite = vendite; }*/
 }

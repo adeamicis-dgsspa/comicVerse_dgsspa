@@ -11,7 +11,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/ricerca/inventario")
+@RequestMapping("/api/inventario")
 public class InventarioController {
     private final InventarioService inventarioService;
 
@@ -22,6 +22,11 @@ public class InventarioController {
         @GetMapping
         public List<InventarioDTO> getAllArticolo() {
             return inventarioService.stampaTuttiArticoli();
+        }
+
+        @GetMapping("/ricerca/{id}")
+            public InventarioDTO getArticoloPerId(@PathVariable Integer id) {
+            return inventarioService.recuperaArticoloPerId(id);
         }
 
         @PostMapping("/crea")
