@@ -11,7 +11,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/ricerca/genere")
+@RequestMapping("/api/genere")
 public class GenereController {
 
     private final GenereService genereService;

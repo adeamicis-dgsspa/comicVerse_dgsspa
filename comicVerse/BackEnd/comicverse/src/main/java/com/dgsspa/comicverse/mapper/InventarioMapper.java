@@ -13,12 +13,12 @@ public interface InventarioMapper {
     @Mapping(target = "idFumetto", expression = "java(inventario.getFumetto().getId())")
     InventarioDTO toDTO(Inventario inventario);
 
-    @Mapping(target = "fumetti", ignore = true)
+    @Mapping(target = "fumetto", ignore = true)
     @Mapping(target = "id", ignore = true)
     Inventario toEntity(InventarioDTO inventarioDTO);
 
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "fumetti", ignore = true)
+    @Mapping(target = "fumetto", ignore = true)
     void updateEntityFromDTO(InventarioDTO dto, @MappingTarget Inventario entity);
 
 }

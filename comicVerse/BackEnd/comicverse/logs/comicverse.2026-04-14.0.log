@@ -1,0 +1,13 @@
+2026-04-14 16:14:03.537 DEBUG [SpringApplicationShutdownHook] o.s.b.a.ApplicationAvailabilityBean - Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2026-04-14 16:14:03.577 DEBUG [SpringApplicationShutdownHook] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@5de3e88e, started on Sat Apr 11 01:01:16 CEST 2026
+2026-04-14 16:14:03.681 DEBUG [SpringApplicationShutdownHook] o.s.c.s.DefaultLifecycleProcessor - Stopping beans in phase 2147483647
+2026-04-14 16:14:03.713 DEBUG [SpringApplicationShutdownHook] o.s.c.s.DefaultLifecycleProcessor - Bean 'webServerGracefulShutdown' completed its stop procedure
+2026-04-14 16:14:03.713 DEBUG [SpringApplicationShutdownHook] o.s.c.s.DefaultLifecycleProcessor - Stopping beans in phase 2147483646
+2026-04-14 16:14:03.832 DEBUG [SpringApplicationShutdownHook] o.s.c.s.DefaultLifecycleProcessor - Bean 'webServerStartStop' completed its stop procedure
+2026-04-14 16:14:03.832 DEBUG [SpringApplicationShutdownHook] o.s.c.s.DefaultLifecycleProcessor - Stopping beans in phase -2147483647
+2026-04-14 16:14:03.836 DEBUG [SpringApplicationShutdownHook] o.s.c.s.DefaultLifecycleProcessor - Bean 'springBootLoggingLifecycle' completed its stop procedure
+2026-04-14 16:14:03.874 DEBUG [SpringApplicationShutdownHook] o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2026-04-14 16:14:03.889 DEBUG [SpringApplicationShutdownHook] o.h.internal.SessionFactoryImpl - HHH000031: Closing
+2026-04-14 16:14:03.901 DEBUG [SpringApplicationShutdownHook] o.h.type.spi.TypeConfiguration$Scope - Un-scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration$Scope@4b22eccb] from SessionFactory [org.hibernate.internal.SessionFactoryImpl@7393a031]
+2026-04-14 16:14:03.909 DEBUG [SpringApplicationShutdownHook] o.h.s.i.AbstractServiceRegistryImpl - Implicitly destroying ServiceRegistry on de-registration of all child ServiceRegistries
+2026-04-14 16:14:03.921 DEBUG [SpringApplicationShutdownHook] o.h.b.r.i.BootstrapServiceRegistryImpl - Implicitly destroying Boot-strap registry on de-registration of all child ServiceRegistries
