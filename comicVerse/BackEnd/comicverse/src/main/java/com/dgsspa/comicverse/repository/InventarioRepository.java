@@ -43,4 +43,14 @@ public class InventarioRepository extends AbstractManagedRepository{
         });
     }
 
+    public Integer contaTotaleArticoli(){
+        return withEntityManager(em ->
+                em.createQuery(
+                                "SELECT SUM(i.giacenza) FROM Inventario i",
+                                Long.class)
+                        .getSingleResult()
+                        .intValue()
+        );
+    }
+
 }
