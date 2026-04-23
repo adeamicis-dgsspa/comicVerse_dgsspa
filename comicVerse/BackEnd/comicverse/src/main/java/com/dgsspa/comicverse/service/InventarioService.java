@@ -110,6 +110,11 @@ public class InventarioService {
         log.info("Eliminazione completata: {}", messaggio);
         return messaggio;
     }
-
+    public Integer recuperaTotaleArticoli(){
+        log.debug("Recupero totale articoli in inventario");
+        Integer totale= inventarioRepository.contaTotaleArticoli();
+        log.info("La giacenza dell'inventario è: totale{}", totale);
+        return totale;
     }
+}
 
