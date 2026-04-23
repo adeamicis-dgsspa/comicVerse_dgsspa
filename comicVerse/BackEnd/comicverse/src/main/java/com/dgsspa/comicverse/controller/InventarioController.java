@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -47,8 +48,12 @@ public class InventarioController {
             return new MessageResponseDTO(inventarioService.eliminaArticolo(id));
         }
 
-        @GetMapping("/totale")
+        @GetMapping("/totale/articoli")
         public Integer getTotaleArticoli() {
             return inventarioService.recuperaTotaleArticoli();
+        }
+        @GetMapping("/mediaPV")
+        public BigDecimal getMediaPrezzoArticoli() {
+            return inventarioService.mediaPrezzoArticoli();
         }
 }
