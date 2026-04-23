@@ -56,12 +56,24 @@ public class InventarioRepository extends AbstractManagedRepository{
     }
     public BigDecimal contaMediaPrezzoArticoli(){
         return withEntityManager(em -> {
-            Double result = em.createQuery(
+            BigDecimal result = em.createQuery(
                             "SELECT AVG(i.prezzoVendita) FROM Inventario i",
-                            Double.class)
+                            BigDecimal.class)
                     .getSingleResult();
             return result != null
-                    ? BigDecimal.valueOf(result).setScale(2, RoundingMode.HALF_UP)
+                    ? result.setScale(2, RoundingMode.HALF_UP)
+                    : BigDecimal.ZERO;        });
+    }
+
+
+    public BigDecimal contaPrezzoComplessivoArticoli() {
+        return withEntityManager(em -> {
+            BigDecimal result = em.createQuery(
+                            "SELECT SUM(i.prezzoVendita) FROM Inventario i",
+                            BigDecimal.class)
+                    .getSingleResult();
+            return result != null
+                    ? result.setScale(2, RoundingMode.HALF_UP)
                     : BigDecimal.ZERO;
         });
     }

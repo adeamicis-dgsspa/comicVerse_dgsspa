@@ -128,7 +128,7 @@ public class InventarioService {
     public BigDecimal totalePrezzoArticoli(){
         log.debug("Recupero del valore totale dell'inventario");
         BigDecimal totaleComplessivo= inventarioRepository.contaPrezzoComplessivoArticoli();
-        log.info("Il valore complessivo dell'inventario è: contaPrezzoComplessivoArticoli{}", contaPrezzoComplessivoArticoli());
+        log.info("Il valore complessivo dell'inventario è: totaleComplessivo{}", totaleComplessivo);
         return totaleComplessivo;
     }
 }
