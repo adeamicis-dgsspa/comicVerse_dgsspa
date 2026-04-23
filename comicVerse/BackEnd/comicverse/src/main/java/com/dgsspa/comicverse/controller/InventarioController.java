@@ -52,8 +52,13 @@ public class InventarioController {
         public Integer getTotaleArticoli() {
             return inventarioService.recuperaTotaleArticoli();
         }
-        @GetMapping("/mediaPV")
+        @GetMapping("/media_prezzo_vendita")
         public BigDecimal getMediaPrezzoArticoli() {
             return inventarioService.mediaPrezzoArticoli();
+        }
+
+        @GetMapping("/totale/prezzo_vendita")
+        public BigDecimal getPrezzoComplessivoArticoli() {
+        return inventarioService.totalePrezzoArticoli();
         }
 }
