@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -115,6 +116,13 @@ public class InventarioService {
         Integer totale= inventarioRepository.contaTotaleArticoli();
         log.info("La giacenza dell'inventario è: totale{}", totale);
         return totale;
+    }
+
+    public BigDecimal mediaPrezzoArticoli(){
+        log.debug("Recupero della media dei prezzi di vendita degli articoli");
+        BigDecimal mediaPrezzoArticolo= inventarioRepository.contaMediaPrezzoArticoli();
+        log.info("La media dei prezzi dell'inventario è: mediaPrezzoArticolo{}", mediaPrezzoArticolo);
+        return mediaPrezzoArticolo;
     }
 }
 
