@@ -2,6 +2,8 @@ package com.dgsspa.comicverse.repository;
 import com.dgsspa.comicverse.model.Inventario;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.Optional;
 
@@ -52,6 +54,17 @@ public class InventarioRepository extends AbstractManagedRepository{
                         .intValue()
         );
     }
-
-
+    public BigDecimal contaMediaPrezzoArticoli(){
+        return withEntityManager(em -> {
+            Double result = em.createQuery(
+                            "SELECT AVG(i.prezzoVendita) FROM Inventario i",
+                            Double.class)
+                    .getSingleResult();
+            return result != null
+                    ? BigDecimal.valueOf(result).setScale(2, RoundingMode.HALF_UP)
+                    : BigDecimal.ZERO;
+        });
+    }
 }
+
+
