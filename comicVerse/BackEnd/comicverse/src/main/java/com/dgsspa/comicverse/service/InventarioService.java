@@ -124,5 +124,12 @@ public class InventarioService {
         log.info("La media dei prezzi dell'inventario è: mediaPrezzoArticolo{}", mediaPrezzoArticolo);
         return mediaPrezzoArticolo;
     }
+
+    public BigDecimal totalePrezzoArticoli(){
+        log.debug("Recupero del valore totale dell'inventario");
+        BigDecimal totaleComplessivo= inventarioRepository.contaPrezzoComplessivoArticoli();
+        log.info("Il valore complessivo dell'inventario è: contaPrezzoComplessivoArticoli{}", contaPrezzoComplessivoArticoli());
+        return totaleComplessivo;
+    }
 }
 
