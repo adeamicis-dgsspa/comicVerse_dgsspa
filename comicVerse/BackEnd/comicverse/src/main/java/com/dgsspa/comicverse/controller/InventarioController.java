@@ -46,4 +46,9 @@ public class InventarioController {
         public MessageResponseDTO eliminaArticolo(@PathVariable Integer id) {
             return new MessageResponseDTO(inventarioService.eliminaArticolo(id));
         }
+
+        @GetMapping("/totale")
+        public Integer getTotaleArticoli() {
+            return inventarioService.recuperaTotaleArticoli();
+        }
 }
